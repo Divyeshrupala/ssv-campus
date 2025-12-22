@@ -1,0 +1,80 @@
+.testimonials {
+    background: linear-gradient(to right, rgb(50, 83, 142), rgb(0, 196, 255))
+}
+
+.testimonials .container {
+    max-width: 1170px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+
+/* section header */
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header .title {
+    font-size: 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: aliceblue;
+    line-height: 1.2;
+    color: yellow;
+}
+
+.testimonials {
+    padding: 100px 0;
+}
+
+
+/* testimonials item */
+
+.testimonials-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 1px 0 3px 0 black;
+}
+
+.testimonials-item .name {
+    font-size: 24px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: black;
+    line-height: 1.2;
+}
+
+.testimonials-item .info {
+    text-transform: capitalize;
+    color: black;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.testimonials-item p {
+    margin-top: 20px;
+    color: rgb(0, 0, 0, 0.8);
+    font-weight: 400;
+}
+
+.testimonials-item .rating {
+    margin-top: 15px;
+    font-size: 14px;
+    color: hsl(36, 88%, 66%);
+    text-shadow: 0px 1px 3px black;
+}
+
+.testimonials .swiper-pagination {
+    position: relative;
+    margin-top: 40px;
+    bottom: auto;
+}
+
+.testimonials .swiper-pagination-bullet {
+    height: 12px;
+    width: 12px;
+    background-color: white;
+}
