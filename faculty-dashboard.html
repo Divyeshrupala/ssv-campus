@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title>Faculty Portal — SSV Campus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        :root {
+            --sidebar-bg: #7c3d03;
+            --accent: #ffd700;
+            --body-bg: #f8f9fc;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            background-color: var(--body-bg);
+            font-family: 'Poppins', sans-serif;
+            color: #2d3436;
+        }
+
+        /* --- Floating Side Navigation --- */
+        .navigation-pane {
+            width: 280px;
+            height: 94vh;
+            position: fixed;
+            top: 3vh;
+            left: 20px;
+            background: linear-gradient(180deg, #7c3d03 0%, #4e2602 100%);
+            border-radius: 30px;
+            padding: 40px 20px;
+            box-shadow: 15px 15px 40px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Updated Logo Styles */
+        .brand-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-logo img {
+            max-width: 180px; /* Adjust size as needed */
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .nav-item {
+            color: rgba(255,255,255,0.7);
+            padding: 15px 25px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-item i { margin-right: 15px; font-size: 18px; }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--accent);
+            color: #7c3d03;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+            text-decoration: none;
+        }
+
+        /* --- Main Canvas --- */
+        .main-wrapper {
+            margin-left: 320px;
+            padding: 40px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(to right, #7c3d03, #d48c45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            background: #fff;
+            border-radius: 15px;
+            padding: 5px;
+            display: flex;
+        }
+
+        .search-container input {
+            border: none;
+            padding: 12px 20px;
+            flex-grow: 1;
+            border-radius: 12px;
+            outline: none;
+        }
+
+        .btn-glow {
+            background: #7c3d03;
+            color: white;
+            border-radius: 12px;
+            padding: 10px 25px;
+            border: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-glow:hover {
+            background: #a15004;
+            box-shadow: 0 8px 20px rgba(124, 61, 3, 0.3);
+        }
+
+        .styled-input {
+            background: #f1f2f6;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 12px 15px;
+            transition: 0.3s;
+        }
+
+        .styled-input:focus {
+            background: #fff;
+            border-color: var(--accent);
+        }
+
+        .logout-section {
+            margin-top: auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        #student-result {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 8px solid var(--accent);
+            animation: fadeInRight 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navigation-pane">
+    <div class="brand-logo">
+        <a href="index.html">
+            <img src="images/logo/logo-no-bg2.png" alt="SSV Logo">
+        </a>
+    </div>
+
+    <a href="#" class="nav-item active"><i class="fas fa-th-large"></i> Overview</a>
+    <a href="#" class="nav-item"><i class="fas fa-user-edit"></i> Mark Entry</a>
+    <a href="#" class="nav-item"><i class="fas fa-list-alt"></i> Records</a>
+    <a href="#" class="nav-item"><i class="fas fa-cog"></i> Profile</a>
+    
+    <div class="logout-section">
+        <a href="#" onclick="handleLogout()" class="nav-item" style="color: var(--accent);">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+</div>
+
+<div class="main-wrapper">
+    <h1 class="header-title">Faculty Control Center</h1>
+
+    <div class="row">
+        <div class="col-lg-5 mb-4">
+            <div class="glass-card h-100">
+                <h4 class="mb-4" style="font-weight: 700;"><i class="fas fa-search-plus mr-2" style="color: #7c3d03;"></i> Search Student</h4>
+                <div class="search-container">
+                    <input type="text" id="search-roll" placeholder="Enter Roll Number">
+                    <button class="btn-glow" onclick="searchStudent()">Search</button>
+                </div>
+
+                <div id="student-result" style="display:none;">
+                    <p class="text-muted small mb-1 font-weight-bold">RECORD FOUND</p>
+                    <h5 id="res-name" class="font-weight-bold mb-1">--</h5>
+                    <span id="res-std" class="badge badge-pill badge-warning px-3 py-2">--</span>
+                    <input type="hidden" id="target-student-id">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7 mb-4">
+            <div class="glass-card">
+                <h4 class="mb-4" style="font-weight: 700;"><i class="fas fa-pen-nib mr-2" style="color: #7c3d03;"></i> Result Entry</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Academic Session</label>
+                        <select id="marks-year" class="form-control styled-input">
+                            <option value="2024-2025">2024-2025</option>
+                            <option value="2023-2024">2023-2024</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Subject</label>
+                        <input type="text" id="marks-subject" class="form-control styled-input" placeholder="e.g. Science">
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label>Marks Obtained</label>
+                        <input type="number" id="marks-score" class="form-control styled-input" placeholder="Score (0-100)">
+                    </div>
+                </div>
+                <button class="btn-glow w-100 py-3" onclick="submitMarks()">
+                    PUBLISH MARKS
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    const _supabase = supabase.createClient('https://tqphwqjhiidgaohzllyw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxcGh3cWpoaWlkZ2FvaHpsbHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MTEyNDIsImV4cCI6MjA4MzI4NzI0Mn0.CvxIEgEcO64TKPyHGbG1Ht-MbCpeNsPWEq1exWWvw2o');
+
+    async function searchStudent() {
+        const roll = document.getElementById('search-roll').value;
+        const { data, error } = await _supabase.from('profiles').select('*').eq('roll_no', roll).single();
+
+        if (data) {
+            document.getElementById('student-result').style.display = 'block';
+            document.getElementById('res-name').innerText = data.full_name;
+            document.getElementById('res-std').innerText = "Grade: " + data.standard;
+            document.getElementById('target-student-id').value = data.id;
+        } else {
+            alert("Record not found in database.");
+        }
+    }
+
+    async function submitMarks() {
+        const s_id = document.getElementById('target-student-id').value;
+        const sub = document.getElementById('marks-subject').value;
+        const scr = document.getElementById('marks-score').value;
+        const yr = document.getElementById('marks-year').value;
+
+        if(!s_id) { alert("Please search for a student first!"); return; }
+
+        const { error } = await _supabase.from('marks').insert([{
+            student_id: s_id,
+            subject: sub,
+            score: parseInt(scr),
+            academic_year: yr
+        }]);
+
+        if (error) alert("Error: " + error.message);
+        else {
+            alert("Marks published successfully!");
+            document.getElementById('marks-score').value = "";
+        }
+    }
+
+    async function handleLogout() {
+        await _supabase.auth.signOut();
+        window.location.href = 'login.html';
+    }
+</script>
+</body>
+</html>

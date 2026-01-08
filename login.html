@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title>Login — SSV Campus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background: #f8f8f8; }
+        .auth-box {
+            background: #fff; padding: 40px; border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.1); margin-top: 50px;
+            border-top: 5px solid gold;
+        }
+        .btn-gold {
+            background-color: gold; color: #000; font-weight: bold;
+            text-transform: uppercase; width: 100%; padding: 12px; border: none;
+        }
+        .btn-gold:hover { background-color: #7c3d03; color: white; }
+        .form-control { border-radius: 0; height: 45px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <div class="auth-box">
+                <img src="images/logo/Logo-no-bg.png" height="80" style="margin-bottom:20px;">
+                <h2 style="color: #7c3d03;">Login</h2>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <input type="email" id="login-email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <button type="submit" id="login-btn" class="btn btn-gold">Sign In</button>
+                </form>
+
+                <hr>
+                <p>New User? <a href="signup.html" style="color: #7c3d03; font-weight: bold;">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script type="module">
+    const _supabase = supabase.createClient('https://tqphwqjhiidgaohzllyw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxcGh3cWpoaWlkZ2FvaHpsbHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MTEyNDIsImV4cCI6MjA4MzI4NzI0Mn0.CvxIEgEcO64TKPyHGbG1Ht-MbCpeNsPWEq1exWWvw2o');
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('login-btn');
+        btn.innerText = "Verifying...";
+        btn.disabled = true;
+        
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        // 1. Authenticate the user
+        const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+
+        if (error) {
+            alert("Login Failed: " + error.message);
+            btn.innerText = "Sign In";
+            btn.disabled = false;
+        } else {
+            console.log("Auth Success, User ID:", data.user.id);
+
+            // 2. Fetch profile with improved error logging
+            const { data: profile, error: pError } = await _supabase
+                .from('profiles')
+                .select('*') // Saara data fetch karein
+                .eq('id', data.user.id)
+                .maybeSingle(); // .single() ki jagah .maybeSingle() taaki crash na ho
+
+            if (pError) {
+                console.error("Database Fetch Error:", pError);
+                alert("Database Error: " + pError.message);
+                btn.innerText = "Sign In";
+                btn.disabled = false;
+                return;
+            }
+
+            if (!profile) {
+                // Agar data table mein hai par yahan nahi mil raha, toh ye 100% RLS issue hai
+                console.error("Profile not found in fetch. Check RLS policies.");
+                alert("ERROR: Profile record exists in DB but is hidden by security (RLS). Please check Supabase Policies.");
+                btn.innerText = "Sign In";
+                btn.disabled = false;
+                return;
+            }
+
+            console.log("Profile Found:", profile);
+
+            // 3. Redirect based on role
+            if (profile.role === 'faculty') {
+                window.location.href = 'faculty-dashboard.html';
+            } else {
+                window.location.href = 'student-dashboard.html';
+            }
+        }
+    });
+</script>
+</body>
+</html>

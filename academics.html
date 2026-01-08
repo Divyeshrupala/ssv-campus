@@ -1,0 +1,681 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Academics &mdash; SSV Campus, Gandhinagar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SSV Campus Academics - Complete CBSE Curriculum, Exam Calendar, Holiday List for Nursery to Grade 12." />
+    <meta name="keywords" content="SSV Campus academics, CBSE curriculum, exam calendar, school holidays Gandhinagar" />
+    <meta name="author" content="arraysofttechnology.com" />
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content="Academics - SSV Campus, Gandhinagar" />
+    <meta property="og:description" content="Complete CBSE curriculum, exam calendar & holiday list." />
+    <meta property="og:image" content="images/logo/Logo-no-bg.png" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="SSV Campus" />
+    <meta name="twitter:title" content="Academics - SSV Campus" />
+    <meta name="twitter:image" content="images/logo/Logo-no-bg.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    
+    <!-- All CSS Files -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/pricing.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo/Logo-no-bg.png">
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    
+    <style>
+        /* Core Selection Styling */
+        ::selection {
+            background: rgba(255, 217, 0, 0.6);
+            color: #008000;
+            text-shadow: 1px 1px 2px black;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.4)), url('images/img_bg_1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 140px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(212,160,23,0.1), transparent);
+        }
+        .hero-section .container { position: relative; z-index: 2; }
+        
+        /* Badge & Typography */
+        .grade-badge {
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            color: #1a1a1a;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        h1, h2, h3, h4 { font-family: 'Roboto Slab', serif; }
+        h2.section-title {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #d4a017, #f39c12);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        /* Section Padding */
+        .section-padding { padding: 100px 0; }
+        
+        /* Cards */
+        .curriculum-card, .holiday-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(212,160,23,0.1);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .curriculum-card::before, .holiday-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+        }
+        .curriculum-card:hover, .holiday-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 35px 80px rgba(0,0,0,0.2);
+        }
+        .curriculum-card i, .holiday-card i {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+        .curriculum-card h4, .holiday-card h4 {
+            color: #d4a017;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Buttons */
+        .btn-gold {
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            color: #1a1a1a !important;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.6);
+            color: #1a1a1a !important;
+            text-decoration: none;
+        }
+        .btn-white {
+            background: transparent;
+            color: white !important;
+            padding: 15px 35px;
+            border: 3px solid white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-white:hover {
+            background: white;
+            color: #d4a017 !important;
+            transform: translateY(-3px);
+        }
+        
+        /* Table Styling */
+        .calendar-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            margin-bottom: 30px;
+        }
+        .calendar-table thead th {
+            background: linear-gradient(45deg, #ffd700, #ff8c00) !important;
+            color: #1a1a1a !important;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+            border: none;
+            padding: 20px;
+        }
+        .calendar-table tbody td {
+            padding: 18px 20px;
+            border-color: rgba(212,160,23,0.2);
+            vertical-align: middle;
+            font-weight: 500;
+        }
+        .calendar-table tbody tr:hover {
+            background: rgba(212,160,23,0.05);
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 6px solid #d4a017;
+            margin-top: 30px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #d4a017 0%, #f39c12 50%, #e67e22 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section { padding: 80px 0; }
+            .hero-section h1 { font-size: 2.5rem !important; }
+            .section-padding { padding: 60px 0; }
+            .curriculum-card, .holiday-card { margin-bottom: 30px; }
+            .grade-badge { padding: 10px 25px; font-size: 13px; }
+        }
+        @media (max-width: 480px) {
+            .btn-gold, .btn-white { padding: 12px 25px; font-size: 1rem; }
+            h2.section-title { font-size: 2rem; }
+        }
+        
+        /* List Styling */
+        .curriculum-card ul, .holiday-card ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        .curriculum-card li, .holiday-card li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+        .curriculum-card li::before, .holiday-card li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+
+<body>
+    <nav class="fh5co-nav" role="navigation">
+            <div class="top" style="background-color: gold;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <p class="site" style="color: black;"><b style="text-transform: uppercase;">SSV Campus, Gandhinagar</b></p>
+                            <a href="https://wa.me/917622011101?text=hi there" target="_blank">
+                                <p class="num"><i class="icon-whatsapp"></i> or <i class="icon-phone"></i>: +91 76220 11101</p>
+                            </a>
+
+                            <ul class="fh5co-social">
+                                <li><a href="https://www.facebook.com/SSV.Campus/" target="_blank"><i class="icon-facebook2"></i></a></li>
+                                <li><a href="https://www.instagram.com/ssvcampus412/" target="_blank"><i class="icon-instagram"></i></a></li>
+                                <li><a href="https://youtube.com/@SSVCAMPUS?si=38SuEvkEye4IyXRx" target="_blank"><i class="icon-youtube"></i></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <a href="index.html">
+                                <div id="fh5co-logo">
+                                    <img src="images/logo/Logo-no-bg.png " height=90px alt="SSV Logo">
+                                    <!--<i style="color: rgb(124, 61, 3);">SSV Campus</i><span></span>-->
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-10 text-right menu-1" style="padding-top: 30px; font-weight:200; text-transform: uppercase;">
+                            <ul>
+                                <li><a href="index.html" class="menu" style="text-transform: uppercase;">Home</a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="#" style="text-transform: uppercase;">School</a>
+                                    <ul class="dropdown">
+                                        <li><a href="about.html" style="text-transform: uppercase;">About SSV</a></li>
+                                        <li><a href="visionmission.html" style="text-transform: uppercase;">Vision & Mission</a></li>
+                                        <li><a href="infrastructure.html" style="text-transform: uppercase;">Infrastructure</a></li>
+                                        <li><a href="uniform.html" style="text-transform: uppercase;">Uniform</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="academics.html" style="text-transform: uppercase;">Academics</a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="CBSE.html">CBSE</a>
+                                </li>
+                                <li><a href="facilities.html" class="menu">Facilities</a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="#">Mega Functions</a>
+                                    <ul class="dropdown">
+                                        <li><a href="last.html">2023-24</a></li>
+                                        <li><a href="last2.html">2022-23</a></li>
+                                        <li><a href="older.html">Past Records</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="media_buzz.html" class="menu">Media Buzz</a>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li class="btn-cta"><a href="login.html" target="_blank"><span style="border-radius: 20%;">Login</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        
+    <div class="fh5co-loader"></div>
+
+    <div id="page">
+        <!-- Your navbar code (unchanged) -->
+        <nav class="fh5co-nav" role="navigation">
+            <!-- [Your complete navbar code here - unchanged] -->
+        </nav>
+
+        <!-- WhatsApp floating icon -->
+        <div>
+            <a href="https://wa.me/917622011101?text=hi there" target="_blank">
+                <i class="icon-whatsapp" style="font-size:50px;color:rgb(255, 255, 255);text-shadow:2px 2px 4px #000000;background-color:green; position: fixed;border-radius: 35px; bottom: 0; margin: 0 0 10px 10px; z-index: 9999;"></i>
+            </a>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center animate-box">
+                        <span class="grade-badge">Complete Academic Hub</span>
+                        <h1 style="font-size: 3.5rem; font-weight: 700; margin: 20px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Academic Excellence</h1>
+                        <p style="font-size: 1.4rem; line-height: 1.7; max-width: 600px; margin: 0 auto; opacity: 0.95;">CBSE Curriculum • Comprehensive Exam Calendar • Complete Holiday Schedule • All Resources Centralized</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CURRICULUM SECTION -->
+        <div class="section-padding" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center mb-5 animate-box">
+                        <h2 class="section-title">📚 CBSE Curriculum Framework</h2>
+                        <p class="lead" style="color: #6c757d; font-size: 1.3rem;">Nursery to Grade 12 - Progressive Academic Excellence</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-center mb-4 animate-box" style="animation-delay: 0.1s;">
+                        <div class="curriculum-card">
+                            <i class="fas fa-seedling" style="color: #27ae60;"></i>
+                            <h4>Foundation Stage</h4>
+                            <p style="color: #6c757d; margin-bottom: 20px;">Nursery - Grade 2</p>
+                            <ul>
+                                <li>Play-way methodology</li>
+                                <li>English, Mathematics, EVS</li>
+                                <li>Phonics & Creative Arts</li>
+                            </ul>
+                            <a href="Docs/Foundation_Syllabus.pdf" class="btn-gold" target="_blank">Download Syllabus</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-4 animate-box" style="animation-delay: 0.2s;">
+                        <div class="curriculum-card">
+                            <i class="fas fa-mountain" style="color: #3498db;"></i>
+                            <h4>Middle School</h4>
+                            <p style="color: #6c757d; margin-bottom: 20px;">Grade 3 - 8</p>
+                            <ul>
+                                <li>9 Core Subjects</li>
+                                <li>Hindi/Sanskrit Language</li>
+                                <li>Computer Applications</li>
+                            </ul>
+                            <a href="Docs/Middle_Syllabus.pdf" class="btn-gold" target="_blank">Download Syllabus</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-4 animate-box" style="animation-delay: 0.3s;">
+                        <div class="curriculum-card">
+                            <i class="fas fa-graduation-cap" style="color: #e67e22;"></i>
+                            <h4>Secondary School</h4>
+                            <p style="color: #6c757d; margin-bottom: 20px;">Grade 9 - 10</p>
+                            <ul>
+                                <li>CBSE Board Preparation</li>
+                                <li>80% External Assessment</li>
+                                <li>Science & Commerce</li>
+                            </ul>
+                            <a href="Docs/Secondary_Syllabus.pdf" class="btn-gold" target="_blank">Download Syllabus</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-4 animate-box" style="animation-delay: 0.4s;">
+                        <div class="curriculum-card">
+                            <i class="fas fa-rocket" style="color: #9b59b6;"></i>
+                            <h4>Senior Secondary</h4>
+                            <p style="color: #6c757d; margin-bottom: 20px;">Grade 11 - 12</p>
+                            <ul>
+                                <li>Science & Commerce Streams</li>
+                                <li>NEET/JEE Preparation</li>
+                                <li>100% Board Pass Rate</li>
+                            </ul>
+                            <a href="Docs/Senior_Syllabus.pdf" class="btn-gold" target="_blank">Download Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAM CALENDAR -->
+        <div class="section-padding" style="background: white;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center mb-5 animate-box">
+                        <h2 class="section-title">📅 Exam Calendar 2025-26</h2>
+                        <p class="lead" style="color: #6c757d;">Unit Tests • Half Yearly • Pre-Boards • Annual Board Exams</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 animate-box">
+                        <h4 style="color: #d4a017; font-size: 1.8rem; margin-bottom: 30px;">📋 Periodic Assessment Schedule</h4>
+                        <div class="table-responsive">
+                            <table class="table calendar-table">
+                                <thead>
+                                    <tr>
+                                        <th>Exam Type</th>
+                                        <th>Classes</th>
+                                        <th>Exam Dates</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Unit Test 1</td><td>I-XII</td><td>15-20 Aug 2025</td></tr>
+                                    <tr><td>Half Yearly</td><td>I-X</td><td>10-20 Oct 2025</td></tr>
+                                    <tr><td>Pre-Board I</td><td>IX-XII</td><td>15-25 Dec 2025</td></tr>
+                                    <tr><td>Pre-Board II</td><td>IX-XII</td><td>15-25 Jan 2026</td></tr>
+                                    <tr><td>Annual Exam</td><td>I-X</td><td>01-15 Mar 2026</td></tr>
+                                    <tr><td>CBSE Board</td><td>X-XII</td><td>Mar 2026 (TBA)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-box">
+                        <a href="Docs/Exam_Calendar_2025-26.pdf" class="btn-gold btn-lg" target="_blank" style="display: block; margin: 30px 0; font-size: 1.2rem;">📥 Download Complete Exam Calendar</a>
+                        <div class="info-box">
+                            <h5 style="color: #d4a017; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Assessment Pattern</h5>
+                            <div style="font-size: 1.1rem;">
+                                <strong>Class 9-10:</strong> 80% External + 20% Internal<br>
+                                <strong>Class 11-12:</strong> CBSE Board Pattern<br>
+                                <strong>Classes 1-8:</strong> 50% Written + 50% Projects/Activities
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOLIDAY LIST -->
+        <div class="section-padding" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center mb-5 animate-box">
+                        <h2 class="section-title">🎉 Holidays 2025-26</h2>
+                        <p class="lead" style="color: #6c757d;">Winter Break • Summer Vacation • Festival Holidays</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-4 animate-box" style="animation-delay: 0.1s;">
+                        <div class="holiday-card">
+                            <i class="fas fa-snowflake" style="color: #3498db;"></i>
+                            <h4>Winter Break</h4>
+                            <p style="font-size: 1.3rem; color: #d4a017; font-weight: 700;">25 Dec 2025 - 5 Jan 2026</p>
+                            <p style="color: #6c757d;"><strong>(12 Days)</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4 animate-box" style="animation-delay: 0.2s;">
+                        <div class="holiday-card">
+                            <i class="fas fa-sun" style="color: #f39c12;"></i>
+                            <h4>Summer Vacation</h4>
+                            <p style="font-size: 1.3rem; color: #d4a017; font-weight: 700;">16 May - 30 Jun 2026</p>
+                            <p style="color: #6c757d;"><strong>(45 Days)</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4 animate-box" style="animation-delay: 0.3s;">
+                        <div class="holiday-card">
+                            <i class="fas fa-gift" style="color: #e74c3c;"></i>
+                            <h4>Festival Holidays</h4>
+                            <ul>
+                                <li>Republic Day: 26 Jan</li>
+                                <li>Holi: 14 Mar 2026</li>
+                                <li>Diwali: 20 Oct 2025 (TBA)</li>
+                                <li>Gandhi Jayanti: 2 Oct</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5 animate-box">
+                    <a href="Docs/Holiday_List_2025-26.pdf" class="btn-gold btn-lg" target="_blank" style="font-size: 1.2rem;">📥 Download Full Holiday List</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center animate-box">
+                        <h2 style="font-size: 3rem; font-weight: 700; margin-bottom: 25px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Academic Resources Hub</h2>
+                        <p style="font-size: 1.4rem; margin-bottom: 40px; opacity: 0.95;">Complete Curriculum • Exam Schedules • Holiday Calendar • Download Everything Instantly</p>
+                        <a href="Docs/SSV_Brochure.pdf" class="btn-lg" style="background: white; color: #d4a017; border: none; padding: 18px 50px; border-radius: 50px; font-weight: 700; font-size: 1.2rem; margin-right: 25px; text-transform: uppercase;">📖 Official Brochure</a>
+                        <a href="contact.html" class="btn-white btn-lg" style="font-size: 1.2rem;">📞 Contact Admissions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your complete footer code goes here -->
+        <footer id="fh5co-footer" role="contentinfo" style="background-image: url(images/img_bg_4.jpg); ">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row row-pb-md">
+                <div class="col-md-3 fh5co-widget" style="padding-top:20px">
+                    <div style="display:flex;">
+                        <img src="images/logo/Logo-no-bg.png" alt="Logo" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h3 style="font-weight: bolder; padding-top:8px; font-size:x-large; background:linear-gradient(to right, rgb(236, 216, 0), rgb(243, 112, 18)); -webkit-text-fill-color: transparent;-webkit-background-clip: text;">SSV Campus</h3>
+                    </div>
+                    <div style="padding-left: 50px; padding-top:15px">
+                        <p style="line-height: 1.5;"><i class="icon-location"></i>&nbsp;&nbsp;345, 1, Rd Number 1,
+                            <br> Sector 3B, Sector 3, Gandhinagar, Gujarat, Pincode &mdash;&nbsp; 382016
+                            <br><span style="font-size: large; color:greenyellow; line-height:1.5"><i class="icon-phone"></i>&nbsp;&nbsp;+91 76220 11101</span>
+                            <br><span style="font-size: large; color:white; line-height:1.5"><i class="icon-mail"></i>&nbsp;&nbsp;ssvprincipal3@gmail.com</span></p>
+                        <div class="row">
+                            <ul class="fh5co-social" style="display: inline-block;">
+                                <li style="display: inline-block; padding:9px 10px 6px 10px; text-shadow:1px 1px 2px rgba(255, 255, 255, 0.8); border:2px ridge gold; "><a href="https://www.facebook.com/SSV.Campus/" target="_blank"><i class="icon-facebook2" style="color: rgb(0, 34, 255); font-size:large"></i></a></li>
+                                <li style="display: inline-block; padding:5px 10px; background:linear-gradient(45deg, orange,orange,orange,orange,rgb(177, 115, 0), rgb(187, 60, 81),rgb(187, 60, 81), rgb(164, 64, 164), rgb(164, 64, 164),blue, blue, blue); border:2px ridge gold; -webkit-text-fill-color: transparent;-webkit-background-clip: text; font-size:large"><a href="https://www.instagram.com/ssvcampus412/" target="_blank"><i class="icon-instagram"></i></a></li>
+                                <li style="display: inline-block; padding:5px 10px; text-shadow:1px 1px 2px rgba(255, 255, 255, 0.8); border:2px ridge gold;"><a href="https://youtube.com/@SSVCAMPUS?si=38SuEvkEye4IyXRx" target="_blank" style="color: rgb(255, 0, 0); font-size:large"><i class="icon-youtube"></i></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 fh5co-widget map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1833.525377183647!2d72.62658304448547!3d23.204820884486733!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a32631ff7d3%3A0x2254ac102fb5d470!2sSSV%20Campus!5e0!3m2!1sen!2sin!4v1710349327628!5m2!1sen!2sin"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+
+                <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                    <h3 style="color: white;  font-size:x-large; background:linear-gradient(to left,rgb(80,223,41), rgb(80, 223, 41), gold); -webkit-text-fill-color: transparent;-webkit-background-clip: text;">Academics</h3>
+                    <ul class="fh5co-footer-links">
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="#" style="color: white;">Curriculum</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="#" style="color: white;">Exam Calendar</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="#" style="color: white;">List of Holidays</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="uniform.html" style="color: white;">Uniform</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                    <h3 style="color: white;  font-size:x-large; background:linear-gradient(to left,rgb(80,223,41), rgb(80, 223, 41), gold); -webkit-text-fill-color: transparent;-webkit-background-clip: text;">Gallery</h3>
+                    <ul class="fh5co-footer-links">
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="media_buzz.html" style="color: white;">Media Buzz</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="last.html" style="color: white;">Current Year Functions</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="last2.html" style="color: white;">Last Year Functions</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="older.html" style="color: white;">Past Functions</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                    <h3 style="color: white;  font-size:x-large; background:linear-gradient(to left,rgb(80,223,41), rgb(80, 223, 41), gold); -webkit-text-fill-color: transparent;-webkit-background-clip: text;">School</h3>
+                    <ul class="fh5co-footer-links">
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="about.html" style="color: white;">About SSV</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="visionmission.html" style="color: white;">Vision & Mission</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="infrastructure.html" style="color: white;">Infrastructure</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="contact.html" style="color: white;">Contact Us</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 fh5co-widget">
+                    <h3 style="color: white;  font-size:x-large; background:linear-gradient(to left,rgb(80,223,41), rgb(80, 223, 41), gold); -webkit-text-fill-color: transparent;-webkit-background-clip: text;">CBSE</h3>
+                    <ul class="fh5co-footer-links">
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="CBSE_MANDATORY_DISCLOSURE.html" style="color: white;">CBSE Mandatory </a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="#" style="color: white;">CBSE Affiliation</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="#" style="color: white;">Circular</a></li>
+                        <li><i class="icon-arrow-right" style="font-weight: bolder;"></i><a href="#" style="color: white;">CBSE Exam Results</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row copyright">
+                <div class="col-md-12 text-center">
+                    <p style="text-align: center;">
+                        <small class="block" style="opacity:0.6">&copy;2024 &nbsp; SSV Campus. All Rights Reserved.</small>
+                        <small class="block" style="opacity:0.6">Designed by &nbsp;<a href="https://www.arraysofttechnology.com/" target="_blank" style="color: rgb(0, 179, 255); font-weight:900">Arraysoft Technology</a></small>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- footer ends here -->
+    </div>
+
+    <!-- Scripts -->
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+    </div>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/magnific-popup-options.js"></script>
+    <script src="js/simplyCountdown.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // Smooth scrolling for anchor links
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if(target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 80
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

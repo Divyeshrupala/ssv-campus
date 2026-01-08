@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title>Signup — SSV Campus Gandhinagar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background: #f8f8f8; padding: 40px 0; }
+        .signup-box { 
+            background: #fff; padding: 40px; border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #7c3d03; 
+        }
+        .role-btn-group { margin-bottom: 25px; display: flex; gap: 10px; }
+        .role-btn { flex: 1; padding: 12px; border: 2px solid gold; background: transparent; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .role-btn.active { background: gold; color: #000; }
+        .hidden { display: none; }
+        .btn-submit { background: #7c3d03; color: white; width: 100%; padding: 14px; font-weight: bold; border: none; margin-top: 20px; text-transform: uppercase; }
+        .btn-submit:hover { background: gold; color: #000; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="signup-box">
+                <div class="text-center" style="margin-bottom: 30px;">
+                    <img src="images/logo/Logo-no-bg.png" height="70">
+                    <h2 style="color: #7c3d03; font-weight: 700;">Account Registration</h2>
+                    <p>Join the SSV Campus Performance Portal</p>
+                </div>
+
+                <label>I am a:</label>
+                <div class="role-btn-group">
+                    <button type="button" class="role-btn active" id="btn-student" onclick="setRole('student')">STUDENT / PARENT</button>
+                    <button type="button" class="role-btn" id="btn-faculty" onclick="setRole('faculty')">FACULTY MEMBER</button>
+                </div>
+
+                <form id="registration-form">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullname" class="form-control" placeholder="Full Name" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="user@email.com" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Create Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="Min 6 characters" required>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Phone Number</label>
+                            <input type="text" id="phone" class="form-control" placeholder="Contact No" required>
+                        </div>
+
+                        <div id="student-fields">
+                            <div class="col-md-6 form-group">
+                                <label>Enrollment / Roll No.</label>
+                                <input type="text" id="roll_no" class="form-control" placeholder="SSV-2024-XXXX">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Current Standard</label>
+                                <select id="standard" class="form-control">
+                                    <option value="1">Standard 1</option>
+                                    <option value="5">Standard 5</option>
+                                    <option value="10">Standard 10</option>
+                                    <option value="12">Standard 12</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="faculty-fields" class="hidden">
+                            <div class="col-md-12 form-group">
+                                <label>Department / Subject</label>
+                                <input type="text" id="subject" class="form-control" placeholder="e.g. Science Department">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="reg-btn" class="btn-submit">Register Account</button>
+                    <p class="text-center" style="margin-top: 20px;">
+                        Already registered? <a href="login.html" style="color: #7c3d03; font-weight: bold;">Login here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    const _supabase = supabase.createClient(
+        'https://tqphwqjhiidgaohzllyw.supabase.co', 
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxcGh3cWpoaWlkZ2FvaHpsbHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MTEyNDIsImV4cCI6MjA4MzI4NzI0Mn0.CvxIEgEcO64TKPyHGbG1Ht-MbCpeNsPWEq1exWWvw2o'
+    );
+
+    let currentRole = 'student';
+
+    window.setRole = function(role) {
+        currentRole = role;
+        document.getElementById('btn-student').classList.toggle('active', role === 'student');
+        document.getElementById('btn-faculty').classList.toggle('active', role === 'faculty');
+        document.getElementById('student-fields').classList.toggle('hidden', role === 'faculty');
+        document.getElementById('faculty-fields').classList.toggle('hidden', role === 'student');
+        
+        // Form field required logic
+        if(role === 'student') {
+            document.getElementById('roll_no').required = true;
+            document.getElementById('subject').required = false;
+        } else {
+            document.getElementById('roll_no').required = false;
+            document.getElementById('subject').required = true;
+        }
+    }
+
+    document.getElementById('registration-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('reg-btn');
+        btn.innerText = "Creating Account...";
+        btn.disabled = true;
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const fullName = document.getElementById('fullname').value;
+        const phone = document.getElementById('phone').value;
+        const rollNo = document.getElementById('roll_no').value;
+        const std = document.getElementById('standard').value;
+        const subject = document.getElementById('subject').value;
+
+        const { data, error } = await _supabase.auth.signUp({ 
+            email, 
+            password,
+            options: {
+                data: {
+                    full_name: fullName,
+                    role: currentRole,
+                    phone: phone,
+                    roll_no: currentRole === 'student' ? rollNo : null,
+                    standard: currentRole === 'student' ? std : null,
+                    subject_expertise: currentRole === 'faculty' ? subject : null
+                }
+            }
+        });
+
+        if (error) {
+            alert("Signup Error: " + error.message);
+            btn.disabled = false; 
+            btn.innerText = "Register Account";
+        } else {
+            alert("Success! Account created. You can now Login.");
+            window.location.href = "login.html";
+        }
+    });
+</script>
+</body>
+</html>
