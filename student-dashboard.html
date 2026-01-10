@@ -10,197 +10,96 @@
             --sidebar-bg: #7c3d03;
             --accent: #ffd700;
             --body-bg: #f8f9fc;
-            --glass: rgba(255, 255, 255, 0.95);
         }
 
-        body {
-            background-color: var(--body-bg);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2d3436;
-            margin: 0;
-        }
+        body { background-color: var(--body-bg); font-family: 'Segoe UI', sans-serif; margin: 0; }
 
-        /* --- Floating Side Navigation --- */
         .navigation-pane {
-            width: 270px;
-            height: 94vh;
-            position: fixed;
-            top: 3vh;
-            left: 20px;
+            width: 270px; height: 94vh; position: fixed; top: 3vh; left: 20px;
             background: linear-gradient(180deg, #7c3d03 0%, #4e2602 100%);
-            border-radius: 30px;
-            padding: 35px 20px;
-            box-shadow: 12px 12px 35px rgba(0,0,0,0.15);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand-logo {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .brand-logo img {
-            max-width: 160px;
-            height: auto;
-            transition: 0.3s ease;
-        }
-
-        .brand-logo a:hover img {
-            transform: scale(1.08);
+            border-radius: 30px; padding: 35px 20px; display: flex; flex-direction: column; z-index: 1000;
         }
 
         .nav-link-item {
-            color: rgba(255,255,255,0.75);
-            padding: 14px 22px;
-            margin-bottom: 10px;
-            border-radius: 15px;
-            text-decoration: none;
-            display: block;
-            transition: 0.3s;
+            color: rgba(255,255,255,0.75); padding: 14px 22px; margin-bottom: 10px;
+            border-radius: 15px; text-decoration: none; display: block; cursor: pointer; transition: 0.3s;
         }
 
         .nav-link-item:hover, .nav-link-item.active {
-            background: var(--accent);
-            color: #7c3d03;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+            background: var(--accent); color: #7c3d03; font-weight: bold;
         }
 
-        /* --- Main Content --- */
-        .main-wrapper {
-            margin-left: 310px;
-            padding: 40px;
+        .main-wrapper { margin-left: 310px; padding: 40px; }
+
+        .dashboard-section { display: none; animation: fadeIn 0.5s ease; }
+        .dashboard-section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass-card {
+            background: white; border-radius: 25px; padding: 30px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06); margin-bottom: 30px;
         }
 
-        .profile-header-card {
-            background: white;
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-            margin-bottom: 30px;
-            border-left: 10px solid var(--sidebar-bg);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .result-card {
-            background: white;
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-        }
-
-        /* --- Custom Table Style --- */
-        .custom-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 10px;
-        }
-
-        .custom-table thead th {
-            background: #f1f2f6;
-            padding: 15px;
-            border: none;
-            color: #7c3d03;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-
-        .custom-table tbody tr {
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            transition: 0.3s;
-        }
-
-        .custom-table tbody tr:hover {
-            transform: scale(1.01);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
-        }
-
-        .custom-table td {
-            padding: 18px 15px;
-            vertical-align: middle;
-            border: none;
-        }
-
-        .status-pill {
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 12px;
-        }
-
+        .status-pill { padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 12px; }
         .pass-pill { background: #dff9fb; color: #130f40; }
         .fail-pill { background: #fab1a0; color: #d63031; }
 
-        .logout-link-box {
-            margin-top: auto;
-            padding: 12px;
-            border: 1px solid var(--accent);
-            border-radius: 15px;
-            text-align: center;
-            color: var(--accent);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .logout-link-box:hover {
-            background: var(--accent);
-            color: #7c3d03;
-            text-decoration: none;
-        }
+        .logout-link-box { margin-top: auto; padding: 12px; border: 1px solid var(--accent); border-radius: 15px; text-align: center; color: var(--accent); text-decoration: none; }
     </style>
 </head>
 <body>
 
 <div class="navigation-pane">
-    <div class="brand-logo">
-        <a href="index.html">
-            <img src="images/logo/logo-no-bg2.png" alt="SSV Logo">
-        </a>
+    <div class="brand-logo" style="text-align: center; margin-bottom: 40px;">
+        <img src="images/logo/logo-no-bg2.png" alt="Logo" style="max-width: 150px;">
     </div>
     
-    <a href="#" class="nav-link-item active">My Performance</a>
-    <a href="#" class="nav-link-item">Study Materials</a>
-    <a href="#" class="nav-link-item">Time Table</a>
-    <a href="#" class="nav-link-item">Profile Settings</a>
-
+    <a onclick="showSection('performance')" id="nav-performance" class="nav-link-item active">My Performance</a>
+    <a onclick="showSection('materials')" id="nav-materials" class="nav-link-item">Study Materials</a>
+    <a onclick="showSection('timetable')" id="nav-timetable" class="nav-link-item">Time Table</a>
+    
     <a href="#" onclick="logout()" class="logout-link-box">Logout Portal</a>
 </div>
 
 <div class="main-wrapper">
-    <div class="profile-header-card">
+    <div class="glass-card" style="border-left: 10px solid var(--sidebar-bg); display: flex; justify-content: space-between; align-items: center;">
         <div>
-            <h2 id="welcome-msg" style="font-weight: 800; color: #7c3d03;">Loading Profile...</h2>
+            <h2 id="welcome-msg" style="font-weight: 800; color: #7c3d03;">Loading...</h2>
             <p class="mb-0 text-muted">Roll No: <span id="roll-no" class="font-weight-bold text-dark">--</span> | Standard: <span id="std-no" class="font-weight-bold text-dark">--</span></p>
-        </div>
-        <div>
-            <label class="small font-weight-bold text-uppercase text-muted">Academic Session</label>
-            <select id="year-select" class="form-control" style="border-radius: 12px; border: 2px solid #eee;" onchange="loadMarks()">
-                <option value="2024-2025">2024-2025</option>
-                <option value="2023-2024">2023-2024</option>
-            </select>
         </div>
     </div>
 
-    <div class="result-card">
-        <h4 class="mb-4" style="font-weight: 700;">Subject Wise Report Card</h4>
-        <div class="table-responsive">
-            <table class="custom-table">
-                <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Marks Obtained</th>
-                        <th>Final Result</th>
-                    </tr>
-                </thead>
-                <tbody id="marks-table">
-                    </tbody>
+    <div id="section-performance" class="dashboard-section active">
+        <div class="glass-card">
+            <div class="d-flex justify-content-between align-items: center; margin-bottom: 20px;">
+                <h4 style="font-weight: 700;">Subject Wise Report Card</h4>
+                <select id="year-select" class="form-control w-25" onchange="loadMarks()">
+                    <option value="2024-2025">2024-2025</option>
+                    <option value="2023-2024">2023-2024</option>
+                </select>
+            </div>
+            <table class="table">
+                <thead><tr><th>Subject</th><th>Marks</th><th>Result</th></tr></thead>
+                <tbody id="marks-table"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="section-materials" class="dashboard-section">
+        <div class="glass-card">
+            <h4 style="font-weight: 700;">Reference Books & Notes</h4>
+            <div id="materials-container" class="row mt-4">
+                </div>
+        </div>
+    </div>
+
+    <div id="section-timetable" class="dashboard-section">
+        <div class="glass-card">
+            <h4 style="font-weight: 700;">Weekly Class Schedule</h4>
+            <table class="table mt-4">
+                <thead><tr><th>Day</th><th>Subject</th><th>Time</th><th>Room</th></tr></thead>
+                <tbody id="timetable-table"></tbody>
             </table>
         </div>
     </div>
@@ -210,54 +109,88 @@
 <script>
     const _supabase = supabase.createClient('https://tqphwqjhiidgaohzllyw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxcGh3cWpoaWlkZ2FvaHpsbHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MTEyNDIsImV4cCI6MjA4MzI4NzI0Mn0.CvxIEgEcO64TKPyHGbG1Ht-MbCpeNsPWEq1exWWvw2o');
 
+    let currentUserProfile = null;
+
     async function checkUser() {
         const { data: { user } } = await _supabase.auth.getUser();
         if (!user) { window.location.href = 'login.html'; return; }
 
         const { data: profile } = await _supabase.from('profiles').select('*').eq('id', user.id).single();
         if (profile) {
+            currentUserProfile = profile;
             document.getElementById('welcome-msg').innerText = "Hello, " + profile.full_name;
             document.getElementById('roll-no').innerText = profile.roll_no;
             document.getElementById('std-no').innerText = profile.standard;
-            loadMarks(user.id);
+            loadMarks();
         }
     }
 
-    async function loadMarks(userId) {
-        if (!userId) {
-            const { data: { user } } = await _supabase.auth.getUser();
-            userId = user.id;
-        }
-        const year = document.getElementById('year-select').value;
-        const { data: marks } = await _supabase.from('marks').select('*').eq('student_id', userId).eq('academic_year', year);
-
-        const table = document.getElementById('marks-table');
-        table.innerHTML = "";
+    // Section Switcher Logic
+    function showSection(sectionId) {
+        // Hide all
+        document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-link-item').forEach(n => n.classList.remove('active'));
         
-        if (!marks || marks.length === 0) {
-            table.innerHTML = "<tr><td colspan='3' class='text-center py-5'>No records found for this year.</td></tr>";
-            return;
-        }
+        // Show selected
+        document.getElementById('section-' + sectionId).classList.add('active');
+        document.getElementById('nav-' + sectionId).classList.add('active');
 
-        marks.forEach(m => {
+        // Load data based on section
+        if(sectionId === 'performance') loadMarks();
+        if(sectionId === 'materials') loadMaterials();
+        if(sectionId === 'timetable') loadTimetable();
+    }
+
+    async function loadMarks() {
+        const year = document.getElementById('year-select').value;
+        const { data: marks } = await _supabase.from('marks').select('*').eq('student_id', currentUserProfile.id).eq('academic_year', year);
+        
+        const table = document.getElementById('marks-table');
+        table.innerHTML = marks?.length ? "" : "<tr><td colspan='3' class='text-center'>No Data Found</td></tr>";
+        
+        marks?.forEach(m => {
             const isPass = m.score >= 35;
-            const statusClass = isPass ? "pass-pill" : "fail-pill";
-            const statusText = isPass ? "PASS" : "FAIL";
-
-            table.innerHTML += `
-                <tr>
-                    <td class="font-weight-bold">${m.subject}</td>
-                    <td><span style="font-size: 18px; font-weight: 600;">${m.score}</span> / 100</td>
-                    <td><span class="status-pill ${statusClass}">${statusText}</span></td>
-                </tr>`;
+            table.innerHTML += `<tr>
+                <td>${m.subject}</td>
+                <td><b>${m.score}</b>/100</td>
+                <td><span class="status-pill ${isPass?'pass-pill':'fail-pill'}">${isPass?'PASS':'FAIL'}</span></td>
+            </tr>`;
         });
     }
 
-    async function logout() {
-        await _supabase.auth.signOut();
-        window.location.href = 'login.html';
+    async function loadMaterials() {
+        const { data: mats } = await _supabase.from('materials').select('*').eq('standard', currentUserProfile.standard);
+        const container = document.getElementById('materials-container');
+        container.innerHTML = mats?.length ? "" : "<p class='ml-3'>No materials uploaded for your grade.</p>";
+
+        mats?.forEach(m => {
+            container.innerHTML += `
+                <div class="col-md-4 mb-3">
+                    <div class="p-3 border rounded shadow-sm">
+                        <h6>${m.subject}</h6>
+                        <p class="small text-muted">${m.title}</p>
+                        <a href="${m.file_url}" target="_blank" class="btn btn-sm btn-outline-primary">View Material</a>
+                    </div>
+                </div>`;
+        });
     }
 
+    async function loadTimetable() {
+        const { data: schedule } = await _supabase.from('timetable').select('*').eq('standard', currentUserProfile.standard);
+        const table = document.getElementById('timetable-table');
+        table.innerHTML = schedule?.length ? "" : "<tr><td colspan='4' class='text-center'>Schedule not updated.</td></tr>";
+
+        schedule?.forEach(s => {
+            table.innerHTML += `<tr>
+                <td>${s.day_of_week}</td>
+                <td>${s.subject}</td>
+                <td>${s.start_time} - ${s.end_time}</td>
+                <td>Room ${s.room_no}</td>
+            </tr>`;
+        });
+    }
+
+    async function logout() { await _supabase.auth.signOut(); window.location.href = 'login.html'; }
     window.onload = checkUser;
 </script>
 </body>
