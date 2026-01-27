@@ -100,7 +100,7 @@
 
 </head>
 
-<body style="background-color: antiquewhite;">
+<body style="background-color: white;">
 
     <div class="fh5co-loader"></div>
 
@@ -177,108 +177,172 @@
             </div>
         </nav>
 
-        
 
-        <div id="fh5co-course">
+        <!-- Professional Contact Form -->
+        <div style="padding:40px 20px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);" align="center">
             <div class="container">
-                <div class="row animate-box">
-                    <div class="col-md-6 col-md-offset-3 text-center " style="padding: 20px;">
-                        <h2 style="color: rgb(96, 40, 21);">Contact Us</h2>
-                        <hr>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-md-6 animate-box">
-                        <div align="center" style="text-indent: 5px; padding:30px; background-color:gold; border-radius:0 40px 40px 0; width:100%">
-                            <div class="hd" align="center" style="width: 100%;">
-                                <h1 style="line-height: 25px; font-size:30px; font-family:Georgia, 'Times New Roman', Times, serif;">Mail OR <br>WhatsApp<br><span style="font-size:10px;">For More Information</span></h1>
-                            </div>
-                        </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <h3 style="color: rgb(96, 40, 21); font-weight: bold; text-align: center; margin-bottom: 30px;">
+                                <i class="fas fa-envelope" style="margin-right: 10px;"></i>GET IN TOUCH
+                            </h3>
+                            <p style="text-align: center; color: #666; margin-bottom: 30px;">
+                                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                            </p>
+                            
+                            <form id="contactForm" style="width: 100%;">
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                        <label for="fname" style="font-weight: 600; color: #333;">First Name *</label>
+                                        <input type="text" id="fname" class="form-control" placeholder="Your First Name" required 
+                                               style="border-radius: 10px; border: 2px solid #e1e5e9; padding: 12px; margin-top: 5px;">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lname" style="font-weight: 600; color: #333;">Last Name *</label>
+                                        <input type="text" id="lname" class="form-control" placeholder="Your Last Name" required
+                                               style="border-radius: 10px; border: 2px solid #e1e5e9; padding: 12px; margin-top: 5px;">
+                                    </div>
+                                </div>
 
-                        <div style="padding:20px;" align="center">
-                            <div>
-                                <a href="mailto:ssvprincipal3@gmail.com" target="_blank">
-                                    <img src="images/Email.png" style="box-shadow: 4px 4px 6px black; width:min(100%, 400px); height:150px; border-radius:50px;">
-                                </a>
-                            </div>
-                        </div>
-                        <div style="padding:20px;" align="center">
-                            <div>
-                                <a href="https://wa.me/917622011101?text=hi there" target="_blank">
-                                    <img src="images/whatsapp1.png" style="box-shadow: 4px 4px 6px black; width:min(100%, 400px); height:150px; border-radius:50px;">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 animate-box">
-                        <div class="course">
-                            <div class="col-md-12 alert-info text-center" style="border-radius: 50px 50px 0 0 ; padding-top:20px">
-                                <h4><i class="icon-location"></i>&nbsp;&nbsp;345, 1, Rd Number 1, Sector 3B, Sector 3, Gandhinagar, Gujarat, Pincode &mdash;&nbsp; 382016</h4>
-                            </div>
-                            <div class="col-md-12 alert-info text-center" style="width: 100%;">
-                                <h4><i class="icon-mail"></i>&nbsp;&nbsp;ssvprincipal3@gmail.com</h4>
-                            </div>
-                            <div class="col-md-12 alert-info text-center" style="width: 100%;">
-                                <h4><i class="icon-phone"></i>&nbsp;&nbsp;+91 76220 11101</h4>
-                            </div>
-                        </div>
-                        <div id="map" class="map" style="padding: 10px 0 40px 0; background-color:rgb(99, 26, 26); border-radius:0 0 50px 50px">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1833.525377183647!2d72.62658304448547!3d23.204820884486733!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a32631ff7d3%3A0x2254ac102fb5d470!2sSSV%20Campus!5e0!3m2!1sen!2sin!4v1710349327628!5m2!1sen!2sin"
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                        <label for="email" style="font-weight: 600; color: #333;">Email Address *</label>
+                                        <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required
+                                               style="border-radius: 10px; border: 2px solid #e1e5e9; padding: 12px; margin-top: 5px;">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" style="font-weight: 600; color: #333;">Phone Number</label>
+                                        <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210"
+                                               style="border-radius: 10px; border: 2px solid #e1e5e9; padding: 12px; margin-top: 5px;">
+                                    </div>
+                                </div>
 
-                        </div>
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <label for="subject" style="font-weight: 600; color: #333;">Subject *</label>
+                                        <input type="text" id="subject" class="form-control" placeholder="What is this regarding?" required
+                                               style="border-radius: 10px; border: 2px solid #e1e5e9; padding: 12px; margin-top: 5px;">
+                                    </div>
+                                </div>
 
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <label for="message" style="font-weight: 600; color: #333;">Message *</label>
+                                        <textarea name="message" id="message" cols="30" rows="6" class="form-control" 
+                                                  placeholder="Please share your thoughts, questions, or feedback..." required
+                                                  style="resize: vertical; border-radius: 10px; border: 2px solid #e1e5e9; padding: 12px; margin-top: 5px;"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group text-center" style="margin-top: 30px;">
+                                    <button type="submit" id="submitBtn" class="btn btn-primary" 
+                                            style="background: linear-gradient(45deg, rgb(96, 40, 21), rgb(124, 61, 3)); 
+                                                   border: none; padding: 15px 40px; border-radius: 25px; 
+                                                   font-weight: 600; font-size: 16px; transition: all 0.3s ease;">
+                                        <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+                                        <span id="btnText">Send Message</span>
+                                    </button>
+                                </div>
+                                
+                                <div id="formMessage" style="margin-top: 20px; text-align: center; display: none;"></div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-
-
-        <!-- <div style="padding:20px" align="center">
-            <h3 style="color:black; font-weight:bolder; text-align:center">GET IN TOUCH</h3>
-            <form action="#" style="width: min(100%, 700px); border:2px solid black; padding:10px" align="center">
-                <div class="row form-group">
-                    <div class="col-md-6">
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" class="form-control" placeholder="Your First Name">
+        <!-- Location and Contact Details -->
+        <div style="padding: 40px 20px; background: #f8f9fa;">
+            <div class="container">
+                <div class="row">
+                    <!-- Location Box -->
+                    <div class="col-md-6 animate-box">
+                        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); height: 100%;">
+                            <h4 style="color: rgb(96, 40, 21); font-weight: bold; margin-bottom: 20px; text-align: center;">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 10px; color: #dc3545;"></i>Our Location
+                            </h4>
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <p style="font-size: 16px; color: #333; line-height: 1.6;">
+                                    <strong>345, 1, Rd Number 1,<br>
+                                    Sector 3B, Sector 3,<br>
+                                    Gandhinagar, Gujarat<br>
+                                    Pincode — 382016</strong>
+                                </p>
+                            </div>
+                            <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.2);">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1833.525377183647!2d72.62658304448547!3d23.204820884486733!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a32631ff7d3%3A0x2254ac102fb5d470!2sSSV%20Campus!5e0!3m2!1sen!2sin!4v1710349327628!5m2!1sen!2sin"
+                                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" class="form-control" placeholder="Your Last Name">
+
+                    <!-- Contact Details Box -->
+                    <div class="col-md-6 animate-box">
+                        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); height: 100%;">
+                            <h4 style="color: rgb(96, 40, 21); font-weight: bold; margin-bottom: 30px; text-align: center;">
+                                <i class="fas fa-phone-alt" style="margin-right: 10px; color: #28a745;"></i>Contact Details
+                            </h4>
+                            
+                            <!-- Email -->
+                            <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #007bff;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fas fa-envelope" style="font-size: 20px; color: #007bff; margin-right: 15px; width: 25px;"></i>
+                                    <div>
+                                        <p style="margin: 0; font-weight: 600; color: #333;">Email Address</p>
+                                        <a href="mailto:ssvprincipal3@gmail.com" style="color: #007bff; text-decoration: none; font-size: 16px;">
+                                            ssvprincipal3@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #28a745;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fas fa-phone" style="font-size: 20px; color: #28a745; margin-right: 15px; width: 25px;"></i>
+                                    <div>
+                                        <p style="margin: 0; font-weight: 600; color: #333;">Phone Number</p>
+                                        <a href="tel:+917622011101" style="color: #28a745; text-decoration: none; font-size: 16px;">
+                                            +91 76220 11101
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp -->
+                            <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #25d366;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fab fa-whatsapp" style="font-size: 20px; color: #25d366; margin-right: 15px; width: 25px;"></i>
+                                    <div>
+                                        <p style="margin: 0; font-weight: 600; color: #333;">WhatsApp</p>
+                                        <a href="https://wa.me/917622011101?text=hi there" target="_blank" style="color: #25d366; text-decoration: none; font-size: 16px;">
+                                            Chat with us on WhatsApp
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Office Hours -->
+                            <div style="padding: 20px; background: #fff3cd; border-radius: 10px; border-left: 4px solid #ffc107;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fas fa-clock" style="font-size: 20px; color: #ffc107; margin-right: 15px; width: 25px;"></i>
+                                    <div>
+                                        <p style="margin: 0; font-weight: 600; color: #333;">Office Hours</p>
+                                        <p style="margin: 0; color: #856404; font-size: 16px;">
+                                            Monday - Friday: 8:00 AM - 4:00 PM<br>
+                                            Saturday: 8:00 AM - 12:00 PM
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <label for="email">Email</label>
-                        <input type="text" id="email" class="form-control" placeholder="Your EMAIL Address">
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" placeholder="Your subject for this message">
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <label for="message">Message</label>
-                        <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us" style="resize: none;"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Send Message" class="btn btn-primary">
-                </div>
-
-            </form>
-        </div> -->
+            </div>
+        </div>
     </div>
-
 
     <div>
         <!-- WHATSAPP LOGO-->
@@ -380,6 +444,10 @@
         <a href="# " class="js-gotop "><i class="icon-arrow-up "></i></a>
     </div>
 
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    
     <!-- jQuery -->
     <script src="js/jquery.min.js "></script>
     <!-- jQuery Easing -->
@@ -419,6 +487,96 @@
             month: d.getMonth() + 1,
             day: d.getDate(),
             enableUtc: false
+        });
+
+        // Contact Form Functionality
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Get form data
+            const formData = {
+                first_name: document.getElementById('fname').value.trim(),
+                last_name: document.getElementById('lname').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+            
+            // Validate required fields
+            if (!formData.first_name || !formData.last_name || !formData.email || !formData.subject || !formData.message) {
+                showMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                showMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Sending...';
+            
+            try {
+                // Insert into Supabase
+                const { data, error } = await _supabase
+                    .from('contacts')
+                    .insert([formData]);
+                
+                if (error) {
+                    throw error;
+                }
+                
+                // Success
+                showMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+                document.getElementById('contactForm').reset();
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showMessage('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Send Message';
+            }
+        });
+        
+        function showMessage(message, type) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.style.display = 'block';
+            formMessage.innerHTML = `
+                <div style="padding: 15px; border-radius: 10px; ${type === 'success' ? 
+                    'background: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 
+                    'background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;'}">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}" style="margin-right: 8px;"></i>
+                    ${message}
+                </div>
+            `;
+            
+            // Auto hide after 5 seconds for success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        // Add hover effect to submit button
+        document.getElementById('submitBtn').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 5px 15px rgba(96, 40, 21, 0.3)';
+        });
+        
+        document.getElementById('submitBtn').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
         });
     </script>
     <!-- MAP STYLE -->

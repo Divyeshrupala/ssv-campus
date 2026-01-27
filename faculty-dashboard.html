@@ -45,6 +45,11 @@
         .btn-glow { background: #7c3d03; color: white; border-radius: 12px; padding: 10px 25px; border: none; font-weight: 600; transition: 0.3s; }
         .btn-glow:hover { background: #a15004; box-shadow: 0 8px 20px rgba(124, 61, 3, 0.3); }
         .styled-input { background: #f1f2f6; border: 2px solid transparent; border-radius: 15px; padding: 12px 15px; width: 100%; margin-bottom: 15px; }
+        
+        /* New Styles for Records */
+        .clickable-row { cursor: pointer; transition: background 0.2s; }
+        .clickable-row:hover { background: #fff9e6 !important; }
+        .detail-box { background: white; border: 2px solid #eee; border-radius: 15px; padding: 20px; margin: 10px 0; }
     </style>
 </head>
 <body>
@@ -106,17 +111,16 @@
     <div id="section-records" class="dashboard-section">
         <div class="glass-card">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4>Recent Academic Submissions</h4>
-                <button class="btn btn-sm btn-outline-dark" onclick="loadAllRecords()"><i class="fas fa-sync"></i> Refresh List</button>
+                <h4>Student Academic Directory</h4>
+                <button class="btn btn-sm btn-outline-dark" onclick="loadAllRecords()"><i class="fas fa-sync"></i> Refresh Students</button>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table">
                     <thead class="thead-light">
                         <tr>
-                            <th>Student ID</th>
-                            <th>Subject</th>
-                            <th>Year</th>
-                            <th>Score</th>
+                            <th>Roll No</th>
+                            <th>Student Name</th>
+                            <th>Grade</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -126,14 +130,12 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
     const _supabase = supabase.createClient('https://tqphwqjhiidgaohzllyw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxcGh3cWpoaWlkZ2FvaHpsbHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MTEyNDIsImV4cCI6MjA4MzI4NzI0Mn0.CvxIEgEcO64TKPyHGbG1Ht-MbCpeNsPWEq1exWWvw2o');
 
-    // UI Logic: Switch Sections
     function showSection(sectionId) {
         document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -144,7 +146,6 @@
         if(sectionId === 'records') loadAllRecords();
     }
 
-    // Auth Check
     async function checkFaculty() {
         const { data: { user } } = await _supabase.auth.getUser();
         if (!user) { window.location.href = 'login.html'; return; }
@@ -155,7 +156,6 @@
         }
     }
 
-    // Search Student by Roll No
     async function searchStudent() {
         const roll = document.getElementById('search-roll').value;
         const { data, error } = await _supabase.from('profiles').select('*').eq('roll_no', roll).single();
@@ -170,7 +170,6 @@
         }
     }
 
-    // Insert Marks
     async function submitMarks() {
         const s_id = document.getElementById('target-student-id').value;
         const sub = document.getElementById('marks-subject').value;
@@ -194,44 +193,108 @@
         }
     }
 
-    // View All Records
+    // --- UPDATED VIEW RECORDS LOGIC ---
+
     async function loadAllRecords() {
+        const table = document.getElementById('all-records-table');
+        table.innerHTML = "<tr><td colspan='4' class='text-center'>Fetching students...</td></tr>";
+
+        // Fetch unique students from profiles
+        const { data: students, error } = await _supabase
+            .from('profiles')
+            .select('id, full_name, roll_no, standard')
+            .eq('role', 'student')
+            .order('roll_no', { ascending: true });
+
+        if(error) { console.log(error); return; }
+
+        table.innerHTML = "";
+        students.forEach(s => {
+            table.innerHTML += `
+                <tr class="clickable-row">
+                    <td><b>${s.roll_no || 'N/A'}</b></td>
+                    <td>${s.full_name}</td>
+                    <td>${s.standard}</td>
+                    <td>
+                        <button class="btn btn-sm btn-glow" onclick="toggleStudentDetails('${s.id}', '${s.full_name}')">
+                            <i class="fas fa-chevron-down"></i> View Marks
+                        </button>
+                    </td>
+                </tr>
+                <tr id="row-details-${s.id}" style="display:none; background: #f9f9f9;">
+                    <td colspan="4">
+                        <div id="box-${s.id}" class="detail-box">
+                            <i class="fas fa-spinner fa-spin"></i> Loading marks...
+                        </div>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    async function toggleStudentDetails(studentId, name) {
+        const detailRow = document.getElementById(`row-details-${studentId}`);
+        const box = document.getElementById(`box-${studentId}`);
+
+        if (detailRow.style.display === 'table-row') {
+            detailRow.style.display = 'none';
+            return;
+        }
+
+        // Show row
+        detailRow.style.display = 'table-row';
+
+        // Fetch marks for this specific student
         const { data: marks, error } = await _supabase
             .from('marks')
-            .select(`id, subject, score, academic_year, student_id`)
-            .order('created_at', { ascending: false });
+            .select('*')
+            .eq('student_id', studentId)
+            .order('academic_year', { ascending: false });
 
-        const table = document.getElementById('all-records-table');
+        if (!marks || marks.length === 0) {
+            box.innerHTML = `<span class="text-muted">No academic records found for ${name}.</span>`;
+            return;
+        }
+
+        let html = `<h6 class="font-weight-bold" style="color:var(--sidebar-bg)">Academic History: ${name}</h6>
+                    <table class="table table-sm mt-2">
+                        <thead>
+                            <tr><th>Year</th><th>Subject</th><th>Score</th><th>Status</th><th>Action</th></tr>
+                        </thead>
+                        <tbody>`;
         
-        table.innerHTML = "";
+        marks.forEach(m => {
+            const isPass = m.score >= 35;
+            html += `
+                <tr>
+                    <td>${m.academic_year}</td>
+                    <td>${m.subject}</td>
+                    <td><b>${m.score}</b>/100</td>
+                    <td><span class="badge ${isPass ? 'badge-success' : 'badge-danger'}">${isPass ? 'PASS' : 'FAIL'}</span></td>
+                    <td>
+                        <button class="btn btn-sm text-danger" onclick="deleteRecord('${m.id}', '${studentId}', '${name}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>`;
+        });
 
-        if(marks) {
-            marks.forEach(m => {
-                table.innerHTML += `
-                    <tr>
-                        <td class="small text-muted">${m.student_id.substring(0,8)}...</td>
-                        <td><b>${m.subject}</b></td>
-                        <td>${m.academic_year}</td>
-                        <td><span class="badge ${m.score >= 35 ? 'badge-success' : 'badge-danger'}">${m.score}</span></td>
-                        <td><button class="btn btn-sm text-danger" onclick="deleteRecord('${m.id}')"><i class="fas fa-trash"></i></button></td>
-                    </tr>`;
-            });
-        }
+        html += `</tbody></table>`;
+        box.innerHTML = html;
     }
 
-    // Delete a specific mark record
-    async function deleteRecord(recordId) {
-        if(confirm("Are you sure you want to delete this mark?")) {
+    async function deleteRecord(recordId, studentId, name) {
+        if(confirm("Permanently delete this mark record?")) {
             const { error } = await _supabase.from('marks').delete().eq('id', recordId);
-            if(!error) loadAllRecords();
+            if(!error) {
+                // Refresh only that student's box
+                const detailRow = document.getElementById(`row-details-${studentId}`);
+                detailRow.style.display = 'none'; // Close it
+                toggleStudentDetails(studentId, name); // Re-open to refresh
+            }
         }
     }
 
-    async function handleLogout() {
-        await _supabase.auth.signOut();
-        window.location.href = 'login.html';
-    }
-
+    async function handleLogout() { await _supabase.auth.signOut(); window.location.href = 'login.html'; }
     window.onload = checkFaculty;
 </script>
 </body>
