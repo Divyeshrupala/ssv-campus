@@ -5,104 +5,363 @@
     <title>Login — SSV Campus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icomoon.css">
     <style>
-        body { background: #f8f8f8; }
-        .auth-box {
-            background: #fff; padding: 40px; border-radius: 10px;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.1); margin-top: 50px;
+        body { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        nav{
+            background-color: white;
+        }
+        
+        /* Navigation Styles */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            color: rgb(96, 40, 21);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .nav-brand:hover {
+            color: rgb(96, 40, 21);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: rgb(96, 40, 21);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffd700;
+            text-decoration: none;
+        }
+        
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 20px;
+        }
+        .auth-box { 
+            background: #fff; 
+            padding: 40px; 
+            border-radius: 15px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
             border-top: 5px solid gold;
+            max-width: 450px;
+            width: 100%;
         }
-        .btn-gold {
-            background-color: gold; color: #000; font-weight: bold;
-            text-transform: uppercase; width: 100%; padding: 12px; border: none;
+        .btn-gold { 
+            background: linear-gradient(45deg, rgb(96, 40, 21), rgb(124, 61, 3));
+            color: white; 
+            width: 100%; 
+            padding: 15px; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 10px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
         }
-        .btn-gold:hover { background-color: #7c3d03; color: white; }
-        .form-control { border-radius: 0; height: 45px; }
+        .btn-gold:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(96, 40, 21, 0.3);
+            color: white;
+        }
+        .btn-gold:disabled {
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
+        }
+        .form-control { 
+            border-radius: 10px; 
+            height: 50px; 
+            border: 2px solid #e1e5e9;
+            padding: 12px 15px;
+            transition: border-color 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: rgb(96, 40, 21);
+            box-shadow: 0 0 0 0.2rem rgba(96, 40, 21, 0.25);
+        }
+        .alert {
+            border-radius: 10px;
+            border: none;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo-section h2 {
+            color: rgb(96, 40, 21);
+            margin-top: 15px;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 text-center">
-            <div class="auth-box">
-                <img src="images/logo/Logo-no-bg.png" height="80" style="margin-bottom:20px;">
-                <h2 style="color: #7c3d03;">Login</h2>
+<!-- Navigation -->
+<nav class="fh5co-nav" role="navigation">
+            <div class="top" style="background-color: gold;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <p class="site" style="color: black;"><b style="text-transform: uppercase;">SSV Campus, Gandhinagar</b></p>
+                            <a href="https://wa.me/917622011101?text=hi there" target="_blank">
+                                <p class="num"><i class="icon-whatsapp"></i> or <i class="icon-phone"></i>: +91 76220 11101</p>
+                            </a>
 
-                <form id="login-form">
-                    <div class="form-group">
-                        <input type="email" id="login-email" class="form-control" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="login-password" class="form-control" placeholder="Password" required>
-                    </div>
-                    <button type="submit" id="login-btn" class="btn btn-gold">Sign In</button>
-                </form>
+                            <ul class="fh5co-social">
+                                <li><a href="https://www.facebook.com/SSV.Campus/" target="_blank"><i class="icon-facebook2"></i></a></li>
+                                <li><a href="https://www.instagram.com/ssvcampus412/" target="_blank"><i class="icon-instagram"></i></a></li>
+                                <li><a href="https://youtube.com/@SSVCAMPUS?si=38SuEvkEye4IyXRx" target="_blank"><i class="icon-youtube"></i></a></li>
 
-                <hr>
-                <p>New User? <a href="signup.html" style="color: #7c3d03; font-weight: bold;">Create an Account</a></p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="top-menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <a href="index.html">
+                                <div id="fh5co-logo">
+                                    <img src="images/logo/Logo-no-bg.png " height=90px alt="SSV Logo">
+                                    <!--<i style="color: rgb(124, 61, 3);">SSV Campus</i><span></span>-->
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-10 text-right menu-1" style="padding-top: 30px; font-weight:200; text-transform: uppercase;">
+                            <ul>
+                                <li><a href="index.html" class="menu" style="text-transform: uppercase;">Home</a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="#" style="text-transform: uppercase;">School</a>
+                                    <ul class="dropdown">
+                                        <li><a href="about.html" style="text-transform: uppercase;">About SSV</a></li>
+                                        <li><a href="visionmission.html" style="text-transform: uppercase;">Vision & Mission</a></li>
+                                        <li><a href="infrastructure.html" style="text-transform: uppercase;">Infrastructure</a></li>
+                                        <li><a href="uniform.html" style="text-transform: uppercase;">Uniform</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="academics.html" style="text-transform: uppercase;">Academics</a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="CBSE.html">CBSE</a>
+                                </li>
+                                <li><a href="facilities.html" class="menu">Facilities</a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="#">Mega Functions</a>
+                                    <ul class="dropdown">
+                                        <li><a href="last.html">2023-24</a></li>
+                                        <li><a href="last2.html">2022-23</a></li>
+                                        <li><a href="older.html">Past Records</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="media_buzz.html" class="menu">Media Buzz</a>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li class="btn-cta"><a href="login.html" target="_blank"><span style="border-radius: 20%;">Login</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="logo-section">
+            <img src="images/logo/Logo-no-bg.png" height="80">
+            <h2>Welcome Back</h2>
+            <p style="color: #666; margin: 0;">Sign in to your account</p>
+        </div>
+
+        <!-- Alert Messages -->
+        <div id="alertMessage" style="display: none;"></div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label for="login-email" style="font-weight: 600; color: #333;">Email Address</label>
+                <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password" style="font-weight: 600; color: #333;">Password</label>
+                <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" id="login-btn" class="btn btn-gold">
+                <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>
+                <span id="btn-text">Sign In</span>
+            </button>
+        </form>
+
+        <hr style="margin: 30px 0;">
+        <div class="text-center">
+            <p style="margin: 0;">New to SSV Campus? <a href="signup.html" style="color: rgb(96, 40, 21); font-weight: bold;">Create an Account</a></p>
+            <p style="margin: 10px 0 0 0; font-size: 14px; color: #666;">
+                Faculty access requires admin approval. <a href="contact.html" style="color: rgb(96, 40, 21);">Contact us</a> for assistance.
+            </p>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
 
-<script type="module">
-    const _supabase = supabase.createClient('https://tqphwqjhiidgaohzllyw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxcGh3cWpoaWlkZ2FvaHpsbHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MTEyNDIsImV4cCI6MjA4MzI4NzI0Mn0.CvxIEgEcO64TKPyHGbG1Ht-MbCpeNsPWEq1exWWvw2o');
+<script>
+    // Show alert message
+    function showAlert(message, type = 'danger') {
+        const alertDiv = document.getElementById('alertMessage');
+        alertDiv.style.display = 'block';
+        alertDiv.className = `alert alert-${type}`;
+        alertDiv.innerHTML = `
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}" style="margin-right: 8px;"></i>
+            ${message}
+        `;
+        
+        // Auto hide success messages
+        if (type === 'success') {
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 3000);
+        }
+    }
 
+    // Hide alert message
+    function hideAlert() {
+        document.getElementById('alertMessage').style.display = 'none';
+    }
+
+    // Main login form handler
     document.getElementById('login-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const btn = document.getElementById('login-btn');
-        btn.innerText = "Verifying...";
-        btn.disabled = true;
+        hideAlert();
         
-        const email = document.getElementById('login-email').value;
+        const btn = document.getElementById('login-btn');
+        const btnText = document.getElementById('btn-text');
+        const originalText = btnText.textContent;
+        
+        // Show loading state
+        btn.disabled = true;
+        btnText.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Signing In...';
+        
+        const email = document.getElementById('login-email').value.trim();
         const password = document.getElementById('login-password').value;
 
-        // 1. Authenticate the user
-        const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+        try {
+            // Step 1: Supabase Authentication
+            const { data: authData, error: authError } = await _supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
 
-        if (error) {
-            alert("Login Failed: " + error.message);
-            btn.innerText = "Sign In";
-            btn.disabled = false;
-        } else {
-            console.log("Auth Success, User ID:", data.user.id);
+            if (authError) {
+                throw new Error(authError.message);
+            }
 
-            // 2. Fetch profile with improved error logging
-            const { data: profile, error: pError } = await _supabase
+            console.log('Authentication successful:', authData.user.id);
+
+            // Step 2: Get user profile to determine role
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Loading Profile...';
+            
+            const { data: profile, error: profileError } = await _supabase
                 .from('profiles')
-                .select('*') // Saara data fetch karein
-                .eq('id', data.user.id)
-                .maybeSingle(); // .single() ki jagah .maybeSingle() taaki crash na ho
+                .select('*')
+                .eq('id', authData.user.id)
+                .single();
 
-            if (pError) {
-                console.error("Database Fetch Error:", pError);
-                alert("Database Error: " + pError.message);
-                btn.innerText = "Sign In";
-                btn.disabled = false;
-                return;
+            if (profileError) {
+                console.error('Profile fetch error:', profileError);
+                throw new Error('Failed to load user profile. Please contact support.');
             }
 
             if (!profile) {
-                // Agar data table mein hai par yahan nahi mil raha, toh ye 100% RLS issue hai
-                console.error("Profile not found in fetch. Check RLS policies.");
-                alert("ERROR: Profile record exists in DB but is hidden by security (RLS). Please check Supabase Policies.");
-                btn.innerText = "Sign In";
-                btn.disabled = false;
-                return;
+                throw new Error('User profile not found. Please contact support.');
             }
 
-            console.log("Profile Found:", profile);
+            console.log('Profile loaded:', profile);
 
-            // 3. Redirect based on role
+            // Step 3: Auto-redirect based on role from database
             if (profile.role === 'faculty') {
-                window.location.href = 'faculty-dashboard.html';
+                // Faculty login
+                showAlert('Faculty login successful! Redirecting to faculty dashboard...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'faculty-dashboard.html';
+                }, 1500);
+                
+            } else if (profile.role === 'student') {
+                // Student login
+                showAlert('Student login successful! Redirecting to student dashboard...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'student-dashboard.html';
+                }, 1500);
+                
             } else {
-                window.location.href = 'student-dashboard.html';
+                throw new Error('Invalid account type. Please contact support.');
+            }
+
+        } catch (error) {
+            console.error('Login error:', error);
+            showAlert(error.message || 'Login failed. Please try again.');
+        } finally {
+            // Re-enable button
+            btn.disabled = false;
+            btnText.textContent = originalText;
+        }
+    });
+
+    // Check if user is already logged in
+    window.addEventListener('load', async () => {
+        const { data: { session } } = await _supabase.auth.getSession();
+        if (session) {
+            // Get user profile to redirect to correct dashboard
+            const { data: profile } = await _supabase
+                .from('profiles')
+                .select('role')
+                .eq('id', session.user.id)
+                .single();
+            
+            if (profile) {
+                if (profile.role === 'faculty') {
+                    window.location.href = 'faculty-dashboard.html';
+                } else {
+                    window.location.href = 'student-dashboard.html';
+                }
             }
         }
     });

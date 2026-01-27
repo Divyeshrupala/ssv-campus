@@ -2,158 +2,470 @@
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
-    <title>Signup — SSV Campus Gandhinagar</title>
+    <title>Student Registration — SSV Campus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/icomoon.css">
     <style>
-        body { background: #f8f8f8; padding: 40px 0; }
-        .signup-box { 
-            background: #fff; padding: 40px; border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #7c3d03; 
+        body { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Source Sans Pro', sans-serif;
         }
-        .role-btn-group { margin-bottom: 25px; display: flex; gap: 10px; }
-        .role-btn { flex: 1; padding: 12px; border: 2px solid gold; background: transparent; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .role-btn.active { background: gold; color: #000; }
-        .hidden { display: none; }
-        .btn-submit { background: #7c3d03; color: white; width: 100%; padding: 14px; font-weight: bold; border: none; margin-top: 20px; text-transform: uppercase; }
-        .btn-submit:hover { background: gold; color: #000; }
+        nav{
+            background-color: white;
+        }
+        
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 20px;
+        }
+        .signup-box { 
+            background: #fff; 
+            padding: 40px; 
+            border-radius: 15px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            border-top: 5px solid gold;
+            max-width: 600px;
+            width: 100%;
+        }
+        .btn-submit { 
+            background: linear-gradient(45deg, rgb(96, 40, 21), rgb(124, 61, 3));
+            color: white; 
+            width: 100%; 
+            padding: 15px; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 10px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .btn-submit:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(96, 40, 21, 0.3);
+        }
+        .btn-submit:disabled {
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
+        }
+        .form-control { 
+            border-radius: 10px; 
+            height: 50px; 
+            border: 2px solid #e1e5e9;
+            padding: 12px 15px;
+            transition: border-color 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: rgb(96, 40, 21);
+            box-shadow: 0 0 0 0.2rem rgba(96, 40, 21, 0.25);
+        }
+        .alert {
+            border-radius: 10px;
+            border: none;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo-section h2 {
+            color: rgb(96, 40, 21);
+            margin-top: 15px;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="signup-box">
-                <div class="text-center" style="margin-bottom: 30px;">
-                    <img src="images/logo/Logo-no-bg.png" height="70">
-                    <h2 style="color: #7c3d03; font-weight: 700;">Account Registration</h2>
-                    <p>Join the SSV Campus Performance Portal</p>
+<!-- Navigation -->
+<nav class="fh5co-nav" role="navigation">
+    <div class="top" style="background-color: gold;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <p class="site" style="color: black;"><b style="text-transform: uppercase;">SSV Campus, Gandhinagar</b></p>
+                    <a href="https://wa.me/917622011101?text=hi there" target="_blank">
+                        <p class="num"><i class="icon-whatsapp"></i> or <i class="icon-phone"></i>: +91 76220 11101</p>
+                    </a>
+                    <ul class="fh5co-social">
+                        <li><a href="https://www.facebook.com/SSV.Campus/" target="_blank"><i class="icon-facebook2"></i></a></li>
+                        <li><a href="https://www.instagram.com/ssvcampus412/" target="_blank"><i class="icon-instagram"></i></a></li>
+                        <li><a href="https://youtube.com/@SSVCAMPUS?si=38SuEvkEye4IyXRx" target="_blank"><i class="icon-youtube"></i></a></li>
+                    </ul>
                 </div>
-
-                <label>I am a:</label>
-                <div class="role-btn-group">
-                    <button type="button" class="role-btn active" id="btn-student" onclick="setRole('student')">STUDENT / PARENT</button>
-                    <button type="button" class="role-btn" id="btn-faculty" onclick="setRole('faculty')">FACULTY MEMBER</button>
-                </div>
-
-                <form id="registration-form">
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Full Name</label>
-                            <input type="text" id="fullname" class="form-control" placeholder="Full Name" required>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="user@email.com" required>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Create Password</label>
-                            <input type="password" id="password" class="form-control" placeholder="Min 6 characters" required>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Phone Number</label>
-                            <input type="text" id="phone" class="form-control" placeholder="Contact No" required>
-                        </div>
-
-                        <div id="student-fields">
-                            <div class="col-md-6 form-group">
-                                <label>Enrollment / Roll No.</label>
-                                <input type="text" id="roll_no" class="form-control" placeholder="SSV-2024-XXXX">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Current Standard</label>
-                                <select id="standard" class="form-control">
-                                    <option value="1">Standard 1</option>
-                                    <option value="5">Standard 5</option>
-                                    <option value="10">Standard 10</option>
-                                    <option value="12">Standard 12</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div id="faculty-fields" class="hidden">
-                            <div class="col-md-12 form-group">
-                                <label>Department / Subject</label>
-                                <input type="text" id="subject" class="form-control" placeholder="e.g. Science Department">
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" id="reg-btn" class="btn-submit">Register Account</button>
-                    <p class="text-center" style="margin-top: 20px;">
-                        Already registered? <a href="login.html" style="color: #7c3d03; font-weight: bold;">Login here</a>
-                    </p>
-                </form>
             </div>
         </div>
+    </div>
+    <div class="top-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <a href="index.html">
+                        <div id="fh5co-logo">
+                            <img src="images/logo/Logo-no-bg.png " height=90px alt="SSV Logo">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-10 text-right menu-1" style="padding-top: 30px; font-weight:200; text-transform: uppercase;">
+                    <ul>
+                        <li><a href="index.html" class="menu" style="text-transform: uppercase;">Home</a></li>
+                        <li class="has-dropdown">
+                            <a href="#" style="text-transform: uppercase;">School</a>
+                            <ul class="dropdown">
+                                <li><a href="about.html" style="text-transform: uppercase;">About SSV</a></li>
+                                <li><a href="visionmission.html" style="text-transform: uppercase;">Vision & Mission</a></li>
+                                <li><a href="infrastructure.html" style="text-transform: uppercase;">Infrastructure</a></li>
+                                <li><a href="uniform.html" style="text-transform: uppercase;">Uniform</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="academics.html" style="text-transform: uppercase;">Academics</a>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="CBSE.html">CBSE</a>
+                        </li>
+                        <li><a href="facilities.html" class="menu">Facilities</a></li>
+                        <li class="has-dropdown">
+                            <a href="#">Mega Functions</a>
+                            <ul class="dropdown">
+                                <li><a href="last.html">2023-24</a></li>
+                                <li><a href="last2.html">2022-23</a></li>
+                                <li><a href="older.html">Past Records</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="media_buzz.html" class="menu">Media Buzz</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li class="btn-cta"><a href="login.html" target="_blank"><span style="border-radius: 20%;">Login</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="auth-container">
+    <div class="signup-box">
+        <div class="logo-section">
+            <img src="images/logo/Logo-no-bg.png" height="80">
+            <h2>Student Registration</h2>
+            <p style="color: #666; margin: 0;">Create your student account to access materials and timetables</p>
+        </div>
+
+        <!-- Student Registration Header -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="background: rgb(96, 40, 21); color: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <h3 style="margin: 0; font-weight: 600;">
+                    <i class="fas fa-user-graduate"></i> Student Registration
+                </h3>
+                <p style="margin: 5px 0 0 0; opacity: 0.9;">Join SSV Campus digital platform</p>
+            </div>
+        </div>
+
+        <!-- Faculty Login Notice -->
+        <div style="background: linear-gradient(45deg, #e3f2fd, #bbdefb); padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 4px solid #2196f3;">
+            <h5 style="margin: 0 0 10px 0; color: #1976d2;">
+                <i class="fas fa-chalkboard-teacher"></i> Faculty Members
+            </h5>
+            <p style="margin: 0; color: #1565c0; font-size: 14px;">
+                <strong>Faculty accounts are pre-created by admin.</strong> If you are a faculty member, please use the 
+                <a href="login.html" style="color: #0d47a1; font-weight: bold;">Login Page</a> with your assigned credentials.
+            </p>
+        </div>
+
+        <!-- Alert Messages -->
+        <div id="alertMessage" style="display: none;"></div>
+
+        <form id="registration-form">
+            <!-- Student Fields Only -->
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label style="font-weight: 600; color: #333;">Full Name *</label>
+                    <input type="text" id="fullname" class="form-control" placeholder="Enter full name" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label style="font-weight: 600; color: #333;">Email Address *</label>
+                    <input type="email" id="email" class="form-control" placeholder="student@example.com" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label style="font-weight: 600; color: #333;">Create Password *</label>
+                    <input type="password" id="password" class="form-control" placeholder="Minimum 6 characters" required minlength="6">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label style="font-weight: 600; color: #333;">Phone Number *</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label style="font-weight: 600; color: #333;">Enrollment / Roll No.</label>
+                    <input type="text" id="roll_no" class="form-control" placeholder="SSV-2024-XXXX">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label style="font-weight: 600; color: #333;">Current Standard *</label>
+                    <select id="standard" class="form-control" required>
+                        <option value="">Select Standard</option>
+                        <option value="1st">1st Standard</option>
+                        <option value="2nd">2nd Standard</option>
+                        <option value="3rd">3rd Standard</option>
+                        <option value="4th">4th Standard</option>
+                        <option value="5th">5th Standard</option>
+                        <option value="6th">6th Standard</option>
+                        <option value="7th">7th Standard</option>
+                        <option value="8th">8th Standard</option>
+                        <option value="9th">9th Standard</option>
+                        <option value="10th">10th Standard</option>
+                        <option value="11th">11th Standard</option>
+                        <option value="12th">12th Standard</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" id="reg-btn" class="btn-submit">
+                <i class="fas fa-user-plus" style="margin-right: 8px;"></i>
+                <span id="btn-text">Create Student Account</span>
+            </button>
+            
+            <div class="text-center" style="margin-top: 30px;">
+                <p style="margin: 0;">Already have an account? <a href="login.html" style="color: rgb(96, 40, 21); font-weight: bold;">Login here</a></p>
+            </div>
+        </form>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+
 <script>
-    const _supabase = supabase.createClient(
-        'https://tqphwqjhiidgaohzllyw.supabase.co', 
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRxcGh3cWpoaWlkZ2FvaHpsbHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3MTEyNDIsImV4cCI6MjA4MzI4NzI0Mn0.CvxIEgEcO64TKPyHGbG1Ht-MbCpeNsPWEq1exWWvw2o'
-    );
-
-    let currentRole = 'student';
-
-    window.setRole = function(role) {
-        currentRole = role;
-        document.getElementById('btn-student').classList.toggle('active', role === 'student');
-        document.getElementById('btn-faculty').classList.toggle('active', role === 'faculty');
-        document.getElementById('student-fields').classList.toggle('hidden', role === 'faculty');
-        document.getElementById('faculty-fields').classList.toggle('hidden', role === 'student');
+    // Show alert message
+    function showAlert(message, type = 'danger') {
+        const alertDiv = document.getElementById('alertMessage');
+        alertDiv.style.display = 'block';
+        alertDiv.className = `alert alert-${type}`;
+        alertDiv.innerHTML = `
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}" style="margin-right: 8px;"></i>
+            ${message}
+        `;
         
-        // Form field required logic
-        if(role === 'student') {
-            document.getElementById('roll_no').required = true;
-            document.getElementById('subject').required = false;
-        } else {
-            document.getElementById('roll_no').required = false;
-            document.getElementById('subject').required = true;
-        }
+        // Scroll to top to show alert
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Hide alert message
+    function hideAlert() {
+        document.getElementById('alertMessage').style.display = 'none';
+    }
+
+    // Clear student fields
+    function clearStudentFields() {
+        document.getElementById('fullname').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('roll_no').value = '';
+        document.getElementById('standard').value = '';
+    }
+
+    // Student registration form handler
     document.getElementById('registration-form').addEventListener('submit', async (e) => {
         e.preventDefault();
+        hideAlert();
+        
+        console.log('🚀 === STUDENT SIGNUP FORM SUBMISSION STARTED ===');
+        console.log('Supabase client available:', !!_supabase);
+        
         const btn = document.getElementById('reg-btn');
-        btn.innerText = "Creating Account...";
+        const btnText = document.getElementById('btn-text');
+        const originalText = btnText.textContent;
+
+        // Show immediate feedback
+        showAlert('Form submitted! Processing...', 'info');
+
+        // Disable button and show loading
         btn.disabled = true;
+        btnText.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Processing...';
 
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const fullName = document.getElementById('fullname').value;
-        const phone = document.getElementById('phone').value;
-        const rollNo = document.getElementById('roll_no').value;
-        const std = document.getElementById('standard').value;
-        const subject = document.getElementById('subject').value;
+        try {
+            console.log('✅ Entered try block');
+            
+            // Step 1: Validate Supabase connection
+            if (!_supabase) {
+                throw new Error('Supabase client not initialized. Please refresh the page.');
+            }
+            console.log('✅ Supabase client validated');
 
-        const { data, error } = await _supabase.auth.signUp({ 
-            email, 
-            password,
-            options: {
-                data: {
-                    full_name: fullName,
-                    role: currentRole,
-                    phone: phone,
-                    roll_no: currentRole === 'student' ? rollNo : null,
-                    standard: currentRole === 'student' ? std : null,
-                    subject_expertise: currentRole === 'faculty' ? subject : null
+            // Step 2: Get and validate form data
+            console.log('📚 === STUDENT REGISTRATION PROCESS ===');
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const fullname = document.getElementById('fullname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const rollNo = document.getElementById('roll_no').value.trim();
+            const standard = document.getElementById('standard').value;
+
+            console.log('📋 Student form data collected:', {
+                email: email,
+                fullname: fullname,
+                phone: phone,
+                rollNo: rollNo,
+                standard: standard,
+                passwordLength: password.length
+            });
+
+            // Validate required fields
+            console.log('🔍 Validating required fields...');
+            if (!fullname) throw new Error('Full name is required');
+            if (!email) throw new Error('Email address is required');
+            if (!password) throw new Error('Password is required');
+            if (password.length < 6) throw new Error('Password must be at least 6 characters');
+            if (!phone) throw new Error('Phone number is required');
+            if (!standard) throw new Error('Please select your current standard');
+            console.log('✅ All required fields validated');
+
+            // Email format validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                throw new Error('Please enter a valid email address');
+            }
+            console.log('✅ Email format validated');
+
+            const userData = {
+                email: email,
+                password: password,
+                full_name: fullname,
+                role: 'student',
+                phone: phone,
+                roll_no: rollNo,
+                standard: standard,
+                subject_expertise: ''
+            };
+
+            // Step 3: Create user account
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Creating account...';
+            showAlert('Creating your student account...', 'info');
+            
+            console.log('🔐 === CREATING SUPABASE ACCOUNT ===');
+            console.log('Account data to be sent:', {
+                email: userData.email,
+                role: userData.role,
+                full_name: userData.full_name,
+                phone: userData.phone
+            });
+            
+            const { data: authData, error: authError } = await _supabase.auth.signUp({
+                email: userData.email,
+                password: userData.password,
+                options: {
+                    data: {
+                        full_name: userData.full_name,
+                        role: userData.role,
+                        phone: userData.phone,
+                        roll_no: userData.roll_no,
+                        standard: userData.standard,
+                        subject_expertise: userData.subject_expertise
+                    }
+                }
+            });
+
+            console.log('📨 === SUPABASE AUTH RESPONSE ===');
+            console.log('Success:', !!authData.user);
+            console.log('User ID:', authData?.user?.id);
+            console.log('User email:', authData?.user?.email);
+            console.log('Email confirmed:', authData?.user?.email_confirmed_at);
+            console.log('Error:', authError?.message);
+
+            if (authError) {
+                console.error('❌ Auth error details:', authError);
+                
+                // Handle specific error cases
+                if (authError.message.includes('already registered')) {
+                    throw new Error('This email is already registered. Please use a different email or try logging in.');
+                } else if (authError.message.includes('Invalid email')) {
+                    throw new Error('Please enter a valid email address.');
+                } else if (authError.message.includes('Password')) {
+                    throw new Error('Password must be at least 6 characters long.');
+                } else {
+                    throw new Error(`Registration failed: ${authError.message}`);
                 }
             }
-        });
 
-        if (error) {
-            alert("Signup Error: " + error.message);
-            btn.disabled = false; 
-            btn.innerText = "Register Account";
-        } else {
-            alert("Success! Account created. You can now Login.");
-            window.location.href = "login.html";
+            if (!authData.user) {
+                throw new Error('Account creation failed - no user data returned from server');
+            }
+
+            console.log('🎉 === STUDENT ACCOUNT CREATED SUCCESSFULLY ===');
+            console.log('New user ID:', authData.user.id);
+
+            // Step 4: Success handling
+            const successMessage = authData.user.email_confirmed_at ? 
+                'Student account created successfully! You can now log in.' :
+                'Student account created successfully! Please check your email to verify your account before logging in.';
+            
+            showAlert(successMessage, 'success');
+
+            // Clear form
+            clearStudentFields();
+
+            // Redirect to login after 4 seconds
+            console.log('🔄 Redirecting to login page in 4 seconds...');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 4000);
+
+        } catch (error) {
+            console.error('💥 === REGISTRATION ERROR ===');
+            console.error('Error type:', error.constructor.name);
+            console.error('Error message:', error.message);
+            console.error('Error stack:', error.stack);
+            
+            // Show user-friendly error message
+            let errorMessage = error.message || 'Registration failed. Please try again.';
+            showAlert(errorMessage, 'danger');
+            
+        } finally {
+            // Re-enable button
+            btn.disabled = false;
+            btnText.textContent = originalText;
+            console.log('🏁 === STUDENT SIGNUP FORM SUBMISSION ENDED ===');
+        }
+    });
+    
+    // Test Supabase connection on page load
+    window.addEventListener('load', async () => {
+        console.log('=== TESTING SUPABASE CONNECTION ON PAGE LOAD ===');
+        try {
+            const { data, error } = await _supabase.from('profiles').select('count').limit(1);
+            if (error) {
+                console.error('Supabase connection test failed:', error);
+                showAlert('Database connection issue detected. Please refresh the page or contact support.', 'warning');
+            } else {
+                console.log('✅ Supabase connection test successful');
+            }
+        } catch (err) {
+            console.error('Supabase connection error:', err);
+            showAlert('Unable to connect to database. Please check your internet connection.', 'danger');
         }
     });
 </script>

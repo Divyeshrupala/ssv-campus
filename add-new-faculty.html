@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Faculty - SSV Campus</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { width: 100%; padding: 15px; background: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin: 10px 0; }
+        button:hover { background: #0056b3; }
+        .alert { padding: 15px; margin: 15px 0; border-radius: 5px; }
+        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .alert-info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .password-info { background: #fff3cd; padding: 15px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #ffc107; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>➕ Add New Faculty</h1>
+        <p>नया faculty member add करें - Database और Auth account दोनों automatically create होंगे।</p>
+        
+        <div class="password-info">
+            <h4>🔐 Password Structure</h4>
+            <p><strong>Format:</strong> firstname@DDMMYY</p>
+            <p><strong>Example:</strong> Divyesh born 15/07/2006 → Password: <code>divyesh@150706</code></p>
+        </div>
+        
+        <div id="alertMessage" style="display: none;"></div>
+        
+        <form id="addFacultyForm">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="facultyName" placeholder="e.g., Ramesh Kumar" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="facultyEmail" placeholder="e.g., ramesh@ssvschool.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Birth Date * (DD/MM/YYYY)</label>
+                <input type="text" id="birthDate" placeholder="e.g., 15/07/1985" pattern="\d{2}/\d{2}/\d{4}" required>
+                <small style="color: #666;">Used for password generation</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="facultyPhone" placeholder="+91 98765 43210">
+            </div>
+            
+            <div class="form-group">
+                <label>Subject Expertise</label>
+                <input type="text" id="facultySubject" placeholder="e.g., Mathematics, English, Science">
+            </div>
+            
+            <button type="submit">Add Faculty (Database + Auth)</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="admin-panel.html" style="color: #007bff; text-decoration: none;">← Back to Admin Panel</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    
+    <script>
+        function showAlert(message, type = 'info') {
+            const alertDiv = document.getElementById('alertMessage');
+            alertDiv.style.display = 'block';
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.innerHTML = message;
+            
+            // Auto hide success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    alertDiv.style.display = 'none';
+                }, 10000);
+            }
+        }
+
+        document.getElementById('addFacultyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('facultyName').value.trim();
+            const email = document.getElementById('facultyEmail').value.trim().toLowerCase();
+            const birthDate = document.getElementById('birthDate').value.trim();
+            const phone = document.getElementById('facultyPhone').value.trim();
+            const subject = document.getElementById('facultySubject').value.trim();
+            
+            // Validate required fields
+            if (!name || !email || !birthDate) {
+                showAlert('Please fill in all required fields.', 'danger');
+                return;
+            }
+            
+            // Validate birth date format
+            const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+            if (!dateRegex.test(birthDate)) {
+                showAlert('Please enter birth date in DD/MM/YYYY format.', 'danger');
+                return;
+            }
+            
+            showAlert('Processing... Creating faculty account.', 'info');
+            
+            try {
+                // Generate structured password
+                const [day, month, year] = birthDate.split('/');
+                const shortYear = year.slice(-2);
+                const firstName = name.split(' ')[0].toLowerCase();
+                const structuredPassword = `${firstName}@${day}${month}${shortYear}`;
+                
+                // Prepare database data
+                const facultyData = {
+                    full_name: name,
+                    email: email,
+                    phone: phone || '+91 98765 43210',
+                    subject_expertise: subject || 'General',
+                    birth_date: `${year}-${month}-${day}`,
+                    password: structuredPassword,
+                    status: 'approved'
+                };
+                
+                // Step 1: Add to database
+                showAlert('Step 1: Adding to database...', 'info');
+                const { data: dbData, error: dbError } = await _supabase
+                    .from('faculty_preapproval')
+                    .insert([facultyData]);
+                
+                if (dbError) {
+                    if (dbError.code === '23505') {
+                        throw new Error('This email is already registered in database.');
+                    }
+                    throw dbError;
+                }
+                
+                // Step 2: Create Auth account
+                showAlert('Step 2: Creating auth account...', 'info');
+                const { data: authData, error: authError } = await _supabase.auth.signUp({
+                    email: email,
+                    password: structuredPassword,
+                    options: {
+                        data: {
+                            full_name: name,
+                            role: 'faculty',
+                            phone: phone || '+91 98765 43210',
+                            roll_no: '',
+                            standard: '',
+                            subject_expertise: subject || 'General'
+                        }
+                    }
+                });
+                
+                if (authError && !authError.message.includes('already registered')) {
+                    console.error('Auth creation error:', authError);
+                    showAlert(`✅ Faculty added to database successfully!<br>
+                    ⚠️ Auth account creation failed: ${authError.message}<br>
+                    Please create auth account manually or contact admin.`, 'success');
+                } else {
+                    // Success!
+                    showAlert(`🎉 <strong>Faculty added successfully!</strong><br><br>
+                    👤 <strong>Name:</strong> ${name}<br>
+                    📧 <strong>Email:</strong> ${email}<br>
+                    🔐 <strong>Password:</strong> <code>${structuredPassword}</code><br>
+                    📅 <strong>Birth Date:</strong> ${birthDate}<br>
+                    📚 <strong>Subject:</strong> ${subject || 'General'}<br><br>
+                    ✅ Database entry created<br>
+                    ✅ Auth account created<br>
+                    ✅ Faculty can now login!`, 'success');
+                }
+                
+                // Clear form
+                document.getElementById('addFacultyForm').reset();
+                
+            } catch (error) {
+                console.error('Error adding faculty:', error);
+                showAlert(`❌ Error: ${error.message}`, 'danger');
+            }
+        });
+        
+        // Auto-generate password preview
+        document.getElementById('facultyName').addEventListener('input', updatePasswordPreview);
+        document.getElementById('birthDate').addEventListener('input', updatePasswordPreview);
+        
+        function updatePasswordPreview() {
+            const name = document.getElementById('facultyName').value.trim();
+            const birthDate = document.getElementById('birthDate').value.trim();
+            
+            if (name && birthDate && /^\d{2}\/\d{2}\/\d{4}$/.test(birthDate)) {
+                const [day, month, year] = birthDate.split('/');
+                const shortYear = year.slice(-2);
+                const firstName = name.split(' ')[0].toLowerCase();
+                const password = `${firstName}@${day}${month}${shortYear}`;
+                
+                const preview = document.getElementById('passwordPreview');
+                if (!preview) {
+                    const previewDiv = document.createElement('div');
+                    previewDiv.id = 'passwordPreview';
+                    previewDiv.style.cssText = 'background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0; border-left: 4px solid #2196f3;';
+                    document.getElementById('birthDate').parentNode.appendChild(previewDiv);
+                }
+                document.getElementById('passwordPreview').innerHTML = `
+                    <strong>🔐 Generated Password:</strong> <code>${password}</code>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
