@@ -1,0 +1,137 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#F5F5DC"/>
+  
+  <!-- Floor -->
+  <rect x="0" y="300" width="600" height="100" fill="#C0C0C0"/>
+  
+  <!-- Lab tables -->
+  <rect x="100" y="250" width="120" height="50" fill="#8B4513"/>
+  <rect x="350" y="250" width="120" height="50" fill="#8B4513"/>
+  
+  <!-- Lab equipment -->
+  <!-- Microscope -->
+  <rect x="120" y="230" width="15" height="20" fill="#000"/>
+  <circle cx="127" cy="225" r="8" fill="#C0C0C0"/>
+  <rect x="125" y="215" width="4" height="10" fill="#000"/>
+  <circle cx="127" cy="210" r="3" fill="#87CEEB"/>
+  
+  <!-- Beakers and test tubes -->
+  <rect x="150" y="235" width="12" height="15" fill="#87CEEB" rx="2"/>
+  <rect x="165" y="240" width="8" height="10" fill="#FF69B4" rx="1"/>
+  <rect x="175" y="238" width="10" height="12" fill="#00FF00" rx="1"/>
+  
+  <!-- Bunsen burner -->
+  <rect x="380" y="240" width="8" height="10" fill="#C0C0C0"/>
+  <ellipse cx="384" cy="235" rx="3" ry="2" fill="#FF4500"/>
+  <ellipse cx="384" cy="232" rx="2" ry="1" fill="#FFD700"/>
+  
+  <!-- Test tube rack -->
+  <rect x="400" y="245" width="40" height="5" fill="#8B4513"/>
+  <rect x="405" y="235" width="3" height="10" fill="#87CEEB"/>
+  <rect x="412" y="238" width="3" height="7" fill="#FF0000"/>
+  <rect x="419" y="240" width="3" height="5" fill="#00FF00"/>
+  <rect x="426" y="237" width="3" height="8" fill="#FFFF00"/>
+  <rect x="433" y="239" width="3" height="6" fill="#FF69B4"/>
+  
+  <!-- Students conducting experiments -->
+  <!-- Student 1 - Looking through microscope -->
+  <circle cx="127" cy="200" r="12" fill="#FFDBAC"/>
+  <rect x="120" y="212" width="14" height="18" fill="#FFFFFF"/>
+  <rect x="122" y="230" width="10" height="15" fill="#0000FF"/>
+  
+  <!-- Student 2 - Mixing chemicals -->
+  <circle cx="170" cy="205" r="12" fill="#FFDBAC"/>
+  <rect x="163" y="217" width="14" height="18" fill="#FFFFFF"/>
+  <rect x="165" y="235" width="10" height="15" fill="#FF0000"/>
+  <!-- Arms holding beaker -->
+  <line x1="170" y1="217" x2="160" y2="240" stroke="#FFDBAC" stroke-width="4"/>
+  <line x1="170" y1="217" x2="180" y2="240" stroke="#FFDBAC" stroke-width="4"/>
+  
+  <!-- Student 3 - Taking notes -->
+  <circle cx="400" cy="200" r="12" fill="#FFDBAC"/>
+  <rect x="393" y="212" width="14" height="18" fill="#FFFFFF"/>
+  <rect x="395" y="230" width="10" height="15" fill="#00FF00"/>
+  <!-- Writing -->
+  <line x1="400" y1="217" x2="385" y2="225" stroke="#FFDBAC" stroke-width="4"/>
+  
+  <!-- Student 4 - Observing experiment -->
+  <circle cx="450" cy="205" r="12" fill="#FFDBAC"/>
+  <rect x="443" y="217" width="14" height="18" fill="#FFFFFF"/>
+  <rect x="445" y="235" width="10" height="15" fill="#FFFF00"/>
+  
+  <!-- Teacher supervising -->
+  <circle cx="300" cy="180" r="15" fill="#FFDBAC"/>
+  <rect x="290" y="195" width="20" height="25" fill="#8A2BE2"/>
+  <rect x="295" y="220" width="10" height="20" fill="#000080"/>
+  <!-- Safety goggles -->
+  <ellipse cx="300" cy="175" rx="8" ry="4" fill="none" stroke="#000" stroke-width="2"/>
+  
+  <!-- Lab safety equipment -->
+  <!-- Fire extinguisher -->
+  <rect x="50" y="200" width="15" height="40" fill="#FF0000"/>
+  <rect x="52" y="195" width="11" height="8" fill="#000"/>
+  <text x="57" y="220" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#FFFFFF">FIRE</text>
+  
+  <!-- First aid kit -->
+  <rect x="520" y="220" width="30" height="20" fill="#FFFFFF" stroke="#FF0000" stroke-width="2"/>
+  <line x1="530" y1="225" x2="540" y2="225" stroke="#FF0000" stroke-width="3"/>
+  <line x1="535" y1="220" x2="535" y2="230" stroke="#FF0000" stroke-width="3"/>
+  
+  <!-- Chemical formulas on whiteboard -->
+  <rect x="200" y="50" width="200" height="100" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+  <text x="300" y="80" text-anchor="middle" font-family="serif" font-size="16" font-weight="bold" fill="#000">CHEMISTRY LAB</text>
+  <text x="220" y="105" font-family="serif" font-size="12" fill="#000">H₂O - Water</text>
+  <text x="220" y="120" font-family="serif" font-size="12" fill="#000">CO₂ - Carbon Dioxide</text>
+  <text x="220" y="135" font-family="serif" font-size="12" fill="#000">NaCl - Salt</text>
+  
+  <!-- Periodic table elements -->
+  <rect x="320" y="100" width="20" height="20" fill="#FFB6C1" stroke="#000" stroke-width="1"/>
+  <text x="330" y="110" text-anchor="middle" font-family="serif" font-size="8" fill="#000">H</text>
+  <text x="330" y="118" text-anchor="middle" font-family="serif" font-size="6" fill="#000">1</text>
+  
+  <rect x="350" y="100" width="20" height="20" fill="#98FB98" stroke="#000" stroke-width="1"/>
+  <text x="360" y="110" text-anchor="middle" font-family="serif" font-size="8" fill="#000">O</text>
+  <text x="360" y="118" text-anchor="middle" font-family="serif" font-size="6" fill="#000">8</text>
+  
+  <!-- Lab stools -->
+  <circle cx="127" cy="245" r="8" fill="#8B4513"/>
+  <rect x="125" y="245" width="4" height="15" fill="#8B4513"/>
+  
+  <circle cx="170" cy="245" r="8" fill="#8B4513"/>
+  <rect x="168" y="245" width="4" height="15" fill="#8B4513"/>
+  
+  <circle cx="400" cy="245" r="8" fill="#8B4513"/>
+  <rect x="398" y="245" width="4" height="15" fill="#8B4513"/>
+  
+  <circle cx="450" cy="245" r="8" fill="#8B4513"/>
+  <rect x="448" y="245" width="4" height="15" fill="#8B4513"/>
+  
+  <!-- Lab notebooks -->
+  <rect x="110" y="255" width="15" height="10" fill="#FFFFFF" stroke="#000" stroke-width="1"/>
+  <rect x="360" y="255" width="15" height="10" fill="#FFFFFF" stroke="#000" stroke-width="1"/>
+  
+  <!-- Pencils -->
+  <rect x="125" y="257" width="12" height="1" fill="#FFFF00"/>
+  <rect x="375" y="257" width="12" height="1" fill="#FFFF00"/>
+  
+  <!-- Safety signs -->
+  <rect x="480" y="160" width="40" height="30" fill="#FFFF00" stroke="#000" stroke-width="2"/>
+  <text x="500" y="175" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#000">SAFETY</text>
+  <text x="500" y="185" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#000">FIRST</text>
+  
+  <!-- Molecules floating -->
+  <circle cx="80" cy="100" r="5" fill="#FF0000"/>
+  <circle cx="90" cy="95" r="3" fill="#FFFFFF"/>
+  <circle cx="90" cy="105" r="3" fill="#FFFFFF"/>
+  <line x1="85" y1="100" x2="87" y2="95" stroke="#000" stroke-width="1"/>
+  <line x1="85" y1="100" x2="87" y2="105" stroke="#000" stroke-width="1"/>
+  
+  <circle cx="520" cy="80" r="4" fill="#0000FF"/>
+  <circle cx="530" cy="80" r="4" fill="#0000FF"/>
+  <line x1="524" y1="80" x2="526" y2="80" stroke="#000" stroke-width="1"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" font-family="serif" font-size="22" font-weight="bold" fill="#8B0000">Science Laboratory</text>
+  <text x="300" y="385" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#000080">Hands-on Learning Through Experiments</text>
+</svg>

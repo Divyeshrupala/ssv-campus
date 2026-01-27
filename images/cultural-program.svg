@@ -1,0 +1,76 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="stageGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE4B5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DEB887;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#F0E68C"/>
+  
+  <!-- Stage -->
+  <rect x="100" y="500" width="1000" height="200" fill="url(#stageGradient)" stroke="#8B4513" stroke-width="3"/>
+  
+  <!-- Curtains -->
+  <rect x="50" y="200" width="100" height="400" fill="#DC143C"/>
+  <rect x="1050" y="200" width="100" height="400" fill="#DC143C"/>
+  
+  <!-- Students performing -->
+  <!-- Student 1 - Dancing -->
+  <circle cx="300" cy="450" r="25" fill="#FDBCB4"/>
+  <rect x="290" y="475" width="20" height="40" fill="#FF69B4"/>
+  <rect x="285" y="515" width="10" height="30" fill="#8B4513"/>
+  <rect x="305" y="515" width="10" height="30" fill="#8B4513"/>
+  <rect x="275" y="485" width="15" height="25" fill="#FDBCB4"/>
+  <rect x="310" y="485" width="15" height="25" fill="#FDBCB4"/>
+  
+  <!-- Student 2 - Singing -->
+  <circle cx="500" cy="450" r="25" fill="#FDBCB4"/>
+  <rect x="490" y="475" width="20" height="40" fill="#00CED1"/>
+  <rect x="485" y="515" width="10" height="30" fill="#8B4513"/>
+  <rect x="505" y="515" width="10" height="30" fill="#8B4513"/>
+  <ellipse cx="520" cy="460" rx="8" ry="5" fill="#000"/>
+  
+  <!-- Student 3 - Playing instrument -->
+  <circle cx="700" cy="450" r="25" fill="#FDBCB4"/>
+  <rect x="690" y="475" width="20" height="40" fill="#32CD32"/>
+  <rect x="685" y="515" width="10" height="30" fill="#8B4513"/>
+  <rect x="705" y="515" width="10" height="30" fill="#8B4513"/>
+  <rect x="720" y="460" width="30" height="8" fill="#8B4513"/>
+  
+  <!-- Student 4 - Dancing -->
+  <circle cx="900" cy="450" r="25" fill="#FDBCB4"/>
+  <rect x="890" y="475" width="20" height="40" fill="#FF1493"/>
+  <rect x="885" y="515" width="10" height="30" fill="#8B4513"/>
+  <rect x="905" y="515" width="10" height="30" fill="#8B4513"/>
+  <rect x="875" y="485" width="15" height="25" fill="#FDBCB4"/>
+  <rect x="910" y="485" width="15" height="25" fill="#FDBCB4"/>
+  
+  <!-- Audience -->
+  <circle cx="200" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="250" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="300" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="350" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="400" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="450" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="500" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="550" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="600" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="650" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="700" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="750" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="800" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="850" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="900" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="950" cy="650" r="15" fill="#FDBCB4"/>
+  <circle cx="1000" cy="650" r="15" fill="#FDBCB4"/>
+  
+  <!-- Decorative elements -->
+  <polygon points="600,100 620,150 580,150" fill="#FFD700"/>
+  <polygon points="400,120 415,160 385,160" fill="#FFD700"/>
+  <polygon points="800,110 815,155 785,155" fill="#FFD700"/>
+  
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#8B0000">CULTURAL PROGRAM</text>
+</svg>
